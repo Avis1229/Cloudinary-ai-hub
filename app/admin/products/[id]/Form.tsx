@@ -1,0 +1,502 @@
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
+
+import { Product } from '@/lib/models/ProductModel';
+import { uploadImage } from '@/lib/cloudinaryUpload';
+import { formatId } from '@/lib/utils';
+
+interface ProductFormData {
+  name: string;
+  slug: string;
+  price: number | string;
+  image: string;
+  images: string[];
+  category: string;
+  brand: string;
+  countInStock: number | string;
+  description: string;
+  tags: string;
+  isSignature: boolean;
+}
+
+export default function ProductEditForm({ productId }: { productId: string }) {
+  const { data: product, error } = useSWR<Product & { images?: string[] }>(`/api/admin/products/${productId}`);
+  const { data: categories } = useSWR<string[]>('/api/products/categories');
+  const router = useRouter();
+  const [isUploading, setIsUploading] = useState(false);
+  const [reviewImages, setReviewImages] = useState<string[]>([]);
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+  const [isNewCategory, setIsNewCategory] = useState(false);
+
+  const { trigger: updateProduct, isMutating: isUpdating } = useSWRMutation(
+    `/api/admin/products/${productId}`,
+    async (url, { arg }: { arg: ProductFormData }) => {
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(arg),
+      });
+      const data = await res.json();
+      if (!res.ok) return toast.error(data.message);
+      toast.success(productId === 'new' ? 'Product created successfully' : 'Product updated successfully');
+      router.push('/admin/products');
+    },
+  );
+
+  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<ProductFormData>({
+    defaultValues: {
+      name: '', slug: '', price: '', image: '', images: [], category: '', brand: '', countInStock: '', description: '', tags: '', isSignature: false
+    },
+  });
+
+  const images = watch('images');
+
+  // Populate form when product loads
+  useEffect(() => {
+    if (!product) return;
+    setValue('name', product.name || '');
+    setValue('slug', product.slug || '');
+    setValue('price', product.price as any);
+    setValue('image', product.image || '');
+    setValue('category', product.category || '');
+    setValue('brand', product.brand || '');
+    setValue('countInStock', product.countInStock as any);
+    setValue('description', product.description || '');
+    setValue('tags', product.tags ? product.tags.join(', ') : '');
+    setValue('images', product.images || (product.image ? [product.image] : []));
+    setValue('isSignature', product.isSignature || false);
+  }, [product, setValue]);
+
+
+
+  const removeImage = (url: string) => {
+    const updated = images.filter(i => i !== url);
+    setValue('images', updated);
+    if (watch('image') === url) {
+      // If removed primary, set new primary
+      setValue('image', updated[0] || '');
+    }
+    setUploadStats(prev => prev.filter(s => s.url !== url));
+  };
+
+  const makePrimary = (url: string) => {
+    const without = images.filter(i => i !== url);
+    setValue('images', [url, ...without]);
+    setValue('image', url);
+  };
+
+  const [uploadStats, setUploadStats] = useState<Array<{ name: string, originalSize: number, optimizedSize?: number, url: string }>>([]);
+
+  const uploadHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    setIsUploading(true);
+    const toastId = toast.loading('Uploading image(s)...');
+    try {
+      const uploaded: string[] = [];
+      const newStats: Array<{ name: string, originalSize: number, optimizedSize?: number, url: string }> = [];
+      
+      // Build exact tags based on the product form data
+      const currentName = watch('name');
+      const currentBrand = watch('brand');
+      const currentCategory = watch('category');
+      const currentTags = watch('tags');
+      const customTags = [
+        currentName,
+        currentBrand,
+        currentCategory,
+        'perfume',
+        ...(currentTags ? currentTags.split(',').map(t => t.trim()) : [])
+      ].filter(t => t && t.trim() !== '');
+
+      for (const file of Array.from(files)) {
+        const result = await uploadImage(file, 'products', 'product', customTags);
+        if (result && result.url) {
+          uploaded.push(result.url);
+          newStats.push({ name: file.name, originalSize: result.original_size_bytes, url: result.url });
+        }
+      }
+      
+      setUploadStats(prev => [...prev, ...newStats]);
+      
+      // Fetch optimized size from Cloudinary delivery URL
+      newStats.forEach(async (stat) => {
+         try {
+            const getRes = await fetch(stat.url);
+            const blob = await getRes.blob();
+            const size = blob.size;
+            setUploadStats(prev => {
+               const copy = [...prev];
+               const idx = copy.findIndex(s => s.url === stat.url);
+               if (idx >= 0) {
+                 copy[idx] = { ...copy[idx], optimizedSize: size > 0 ? size : -1 };
+               }
+               return copy;
+            });
+         } catch (e) {
+            // Ignore fetch errors, but mark as done
+            setUploadStats(prev => {
+               const copy = [...prev];
+               const idx = copy.findIndex(s => s.url === stat.url);
+               if (idx >= 0) copy[idx] = { ...copy[idx], optimizedSize: -1 };
+               return copy;
+            });
+         }
+      });
+
+      if (uploaded.length) {
+        const newImages = [...images, ...uploaded];
+        setValue('images', newImages);
+        
+        // If current image is empty or the default placeholder, set the first uploaded one as primary
+        const currentImage = watch('image');
+        const isPlaceholder = currentImage && currentImage.includes('No_Image_Available');
+        if (!currentImage || isPlaceholder) {
+          setValue('image', newImages[0]);
+        }
+        
+        setReviewImages(uploaded);
+        setCurrentReviewIndex(0);
+        setIsReviewOpen(true);
+      }
+      toast.success(`Uploaded ${uploaded.length} image(s)`, { id: toastId });
+    } catch (err: any) {
+      toast.error(err.message || 'Upload failed', { id: toastId });
+    } finally {
+      setIsUploading(false);
+      e.target.value = '';
+    }
+  };
+
+  const formSubmit = async (formData: ProductFormData) => {
+    // Ensure numeric coercion
+    const payload = {
+      ...formData,
+      price: Number(formData.price),
+      countInStock: Number(formData.countInStock),
+      tags: formData.tags ? formData.tags.split(',').map(t => t.trim()).filter(Boolean) : [],
+      isSignature: formData.isSignature,
+    };
+    await updateProduct(payload as any);
+  };
+
+
+
+  if (error) return <div className='alert alert-error'>{(error as any).message || 'Failed to load product'}</div>;
+  if (!product) return <div className='flex flex-col items-center justify-center p-10 gap-3'><span className='loading loading-spinner loading-lg' /><p className='text-sm opacity-70'>Loading product…</p></div>;
+
+  const Field = ({ id, label, type = 'text', required = false }: { id: keyof ProductFormData; label: string; type?: string; required?: boolean }) => (
+    <div className='space-y-1'>
+      <label className='text-xs font-semibold uppercase tracking-wide opacity-70' htmlFor={id}>{label}</label>
+      <input
+        id={id}
+        type={type}
+        {...register(id as any, { required: required && `${label} is required` })}
+        className='input input-bordered input-sm w-full'
+      />
+      {errors[id as keyof ProductFormData]?.message && <p className='text-error text-xs'>{String(errors[id as keyof ProductFormData]?.message)}</p>}
+    </div>
+  );
+
+  return (
+    <div className='space-y-6 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+      <div className='flex flex-col md:flex-row md:items-center justify-between gap-2'>
+        <h1 className='h-fluid'>
+          {productId === 'new' ? 'Create New Product' : (
+            <>Edit Product <span className='text-primary'>{formatId(productId)}</span></>
+          )}
+        </h1>
+        <div className='text-xs opacity-70'>Primary Image used in listings</div>
+      </div>
+
+      <form onSubmit={handleSubmit(formSubmit)} className='space-y-8'>
+        {/* Basic Info Card */}
+        <div className='card bg-base-100 shadow-sm'>
+          <div className='card-body p-5 space-y-6'>
+            <h2 className='font-semibold tracking-wide text-sm uppercase opacity-70'>Basic Information</h2>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+              <Field id='name' label='Name' required />
+              <Field id='slug' label='Slug' required />
+              <Field id='brand' label='Brand' required />
+              
+              <div className='space-y-1'>
+                <label className='text-xs font-semibold uppercase tracking-wide opacity-70' htmlFor='category'>Category</label>
+                {!isNewCategory ? (() => {
+                  const { onChange: rhfOnChange, ...registerRest } = register('category', { required: 'Category is required' });
+                  return (
+                  <select
+                    id='category'
+                    className='select select-bordered select-sm w-full'
+                    {...registerRest}
+                    onChange={(e) => {
+                      if (e.target.value === 'ADD_NEW') {
+                        setIsNewCategory(true);
+                        setValue('category', '');
+                      } else {
+                        rhfOnChange(e);
+                      }
+                    }}
+                  >
+                    <option value="" disabled>Select category</option>
+                    <option value='Signature'>Signature</option>
+                    <option value='Body Wash'>Body Wash</option>
+                    <option value='Face Wash'>Face Wash</option>
+                    <option value='Body Scrub'>Body Scrub</option>
+                    <option value='Combo'>Combo</option>
+                    {categories?.filter(c => !['Signature', 'Body Wash', 'Face Wash', 'Body Scrub', 'Combo'].includes(c)).map(c => (
+                      <option key={c} value={c}>{c}</option>
+                    ))}
+                    <option value="ADD_NEW">+ Add New Category...</option>
+                  </select>
+                  );
+                })() : (
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="Type new category"
+                      className="input input-bordered input-sm w-full"
+                      {...register('category', { required: 'Category is required' })}
+                      autoFocus
+                    />
+                    <button 
+                      type="button" 
+                      className="btn btn-sm btn-ghost" 
+                      onClick={() => {
+                        setIsNewCategory(false);
+                        setValue('category', '');
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                )}
+                {errors.category?.message && <p className='text-error text-xs'>{errors.category.message}</p>}
+              </div>
+
+              <Field id='price' label='Price' type='number' required />
+              <Field id='countInStock' label='Count In Stock' type='number' required />
+              
+              <div className='space-y-1'>
+                <label className='text-xs font-semibold uppercase tracking-wide opacity-70'>Collections</label>
+                <label className="label cursor-pointer justify-start gap-4 border rounded-lg px-4 py-1.5 h-8">
+                  <span className="label-text">Signature Collection</span> 
+                  <input type="checkbox" className="toggle toggle-primary toggle-sm" {...register('isSignature')} />
+                </label>
+              </div>
+
+              <div className='col-span-1 md:col-span-1'>
+                <Field id='tags' label='Tags (comma separated)' />
+              </div>
+            </div>
+            <div className='space-y-1'>
+              <label className='text-xs font-semibold uppercase tracking-wide opacity-70' htmlFor='description'>Description</label>
+              <textarea id='description' rows={4} {...register('description', { required: 'Description is required' })} className='textarea textarea-bordered w-full text-sm' />
+              {errors.description?.message && <p className='text-error text-xs'>{errors.description.message}</p>}
+            </div>
+          </div>
+        </div>
+
+
+        {/* Images / Gallery */}
+        <div className='card bg-base-100 shadow-sm'>
+          <div className='card-body p-5 space-y-5'>
+            <h2 className='font-semibold tracking-wide text-sm uppercase opacity-70'>Images</h2>
+            <div className='flex flex-col lg:flex-row gap-6'>
+              <div className='space-y-3 w-full lg:w-2/3'>
+                <div className='flex items-center gap-3 flex-wrap'>
+                  <input
+                    type='file'
+                    multiple
+                    onChange={uploadHandler}
+                    disabled={isUploading}
+                    className='file-input file-input-sm file-input-bordered'
+                  />
+                  {isUploading && <span className='loading loading-spinner loading-sm' />}
+                  <input
+                    type='text'
+                    placeholder='Primary image URL (optional)'
+                    className='input input-bordered input-sm flex-1'
+                    {...register('image', { required: 'Primary image is required' })}
+                  />
+                </div>
+                {errors.image?.message && <p className='text-error text-xs'>{errors.image.message}</p>}
+
+                {uploadStats.length > 0 && (
+                  <div className='flex flex-col gap-2 p-3 bg-base-200/50 rounded-lg text-xs'>
+                    <div className='font-semibold opacity-70 uppercase tracking-wide'>AI Pipeline Status</div>
+                    {uploadStats.map((stat, i) => (
+                      <div key={i} className='flex justify-between items-center bg-base-100 p-2 rounded shadow-sm border border-base-200'>
+                        <span className='truncate w-1/3 opacity-80' title={stat.name}>{stat.name}</span>
+                        <div className='flex gap-4 items-center'>
+                          <span className='text-error opacity-80'>Original: {(stat.originalSize / 1024).toFixed(1)} KB</span>
+                          {stat.optimizedSize !== undefined ? (
+                            stat.optimizedSize === -1 ? (
+                              <span className='text-success font-medium flex items-center gap-1'>
+                                Optimized (size hidden)
+                              </span>
+                            ) : (
+                              <span className='text-success font-medium flex items-center gap-1'>
+                                Optimized: {(stat.optimizedSize / 1024).toFixed(1)} KB 
+                                <span className='badge badge-success badge-sm badge-outline ml-1'>-{Math.round((1 - stat.optimizedSize / stat.originalSize) * 100)}%</span>
+                              </span>
+                            )
+                          ) : (
+                            <span className='text-warning flex items-center gap-1'>
+                              <span className='loading loading-spinner loading-xs'></span> Optimizing...
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4'>
+                  {images.map((img, idx) => (
+                    <div key={img} className={`relative group border rounded-lg overflow-hidden ${idx === 0 ? 'ring-2 ring-primary' : ''}`}>
+                      <div className='relative w-full h-28'>
+                        <Image src={img} alt={`Image ${idx+1}`} fill sizes="(max-width: 768px) 100vw, 33vw" className='object-cover' />
+                      </div>
+                      <div className='absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex flex-col justify-center items-center gap-2 text-xs'>
+                        <button type='button' onClick={() => makePrimary(img)} className='btn btn-xs btn-primary'>Primary</button>
+                        <button type='button' onClick={() => removeImage(img)} className='btn btn-xs btn-error'>Remove</button>
+                      </div>
+                      {idx === 0 && <span className='absolute top-1 left-1 badge badge-primary badge-xs'>Main</span>}
+                    </div>
+                  ))}
+                  {images.length === 0 && (
+                    <div className='col-span-full text-center text-xs opacity-60 p-4 border border-dashed rounded'>No images yet. Upload or paste a URL.</div>
+                  )}
+                </div>
+              </div>
+              <div className='w-full lg:w-1/3 space-y-3'>
+                <p className='text-xs opacity-70 leading-relaxed'>Upload multiple product images to create a gallery. The first image (outlined) is used as the primary image across listings. You can reorder by setting another image as Primary. Removing the primary will automatically shift the next image up.</p>
+                <div className='rounded-lg bg-base-200/50 p-3 text-[11px] space-y-1'>
+                  <p><strong>Tips:</strong></p>
+                  <ul className='list-disc ml-4 space-y-1'>
+                    <li>Use square images (800x800) for best consistency.</li>
+                    <li>Keep file sizes under 500KB for fast loads.</li>
+                    <li>Primary image should be a clear, centered shot.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <input type='hidden' {...register('images')} />
+          </div>
+        </div>
+
+
+
+        {/* Submit */}
+        <div className='flex flex-col sm:flex-row gap-3 sm:items-center justify-between'>
+          <div className='text-xs opacity-60'>Last updated will reflect after saving.</div>
+          <div className='flex gap-3'>
+            <Link href='/admin/products' className='btn btn-ghost btn-sm'>Cancel</Link>
+            <button type='submit' disabled={isUpdating} className='btn btn-primary btn-sm'>
+              {isUpdating && <span className='loading loading-spinner loading-xs'></span>}
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </form>
+
+      {isReviewOpen && reviewImages.length > 0 && (
+        <div className='fixed inset-0 z-50 flex items-center justify-center bg-base-300/70 backdrop-blur-sm p-4'>
+          <div className='card bg-base-100 shadow-xl w-full max-w-3xl relative'>
+            <button
+              type='button'
+              className='btn btn-sm btn-circle absolute top-2 right-2'
+              aria-label='Close'
+              onClick={() => setIsReviewOpen(false)}
+            >✕</button>
+            <div className='card-body p-5 space-y-4'>
+              <h3 className='font-semibold text-sm uppercase tracking-wide opacity-70'>Review Uploaded Images</h3>
+              <div className='flex flex-col md:flex-row gap-6'>
+                <div className='flex-1 flex flex-col items-center gap-3'>
+                  <div className='w-full aspect-square max-w-sm relative rounded-lg overflow-hidden border'>
+                    <div className='relative w-full h-full'>
+                      <Image
+                        src={reviewImages[currentReviewIndex]}
+                        alt={`Uploaded ${currentReviewIndex + 1}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className='object-contain bg-base-200'
+                      />
+                    </div>
+                    {images[0] === reviewImages[currentReviewIndex] && (
+                      <span className='absolute top-2 left-2 badge badge-primary badge-sm'>Primary</span>
+                    )}
+                  </div>
+                  <div className='flex items-center gap-2'>
+                    <button
+                      type='button'
+                      className='btn btn-xs'
+                      disabled={currentReviewIndex === 0}
+                      onClick={() => setCurrentReviewIndex(i => Math.max(0, i - 1))}
+                    >Prev</button>
+                    <span className='text-[11px] opacity-70'>{currentReviewIndex + 1} / {reviewImages.length}</span>
+                    <button
+                      type='button'
+                      className='btn btn-xs'
+                      disabled={currentReviewIndex === reviewImages.length - 1}
+                      onClick={() => setCurrentReviewIndex(i => Math.min(reviewImages.length - 1, i + 1))}
+                    >Next</button>
+                  </div>
+                  <div className='flex flex-wrap gap-2 justify-center max-w-full'>
+                    {reviewImages.map((u, idx) => (
+                      <button
+                        key={u}
+                        type='button'
+                        onClick={() => setCurrentReviewIndex(idx)}
+                        className={`h-12 w-12 overflow-hidden rounded border ${idx === currentReviewIndex ? 'ring ring-primary' : 'opacity-70 hover:opacity-100'}`}
+                        title={`Image ${idx + 1}`}
+                      >
+                        <div className='relative w-full h-full'>
+                          <Image src={u} alt='' fill sizes="48px" className='object-cover' />
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className='w-full md:w-64 space-y-4'>
+                  <div className='space-y-2'>
+                    <button
+                      type='button'
+                      className='btn btn-primary btn-sm w-full'
+                      onClick={() => makePrimary(reviewImages[currentReviewIndex])}
+                    >Set As Primary</button>
+                    <button
+                      type='button'
+                      className='btn btn-error btn-sm w-full'
+                      onClick={() => {
+                        const target = reviewImages[currentReviewIndex];
+                        removeImage(target);
+                        const remaining = reviewImages.filter(i => i !== target);
+                        setReviewImages(remaining);
+                        if (remaining.length === 0) setIsReviewOpen(false); else setCurrentReviewIndex(Math.min(currentReviewIndex, remaining.length - 1));
+                      }}
+                    >Remove Image</button>
+                  </div>
+                  <div className='text-[11px] opacity-70 leading-relaxed'>Review newly uploaded images. You can set a primary image or remove any undesired uploads before saving the product. Closing this panel keeps all remaining images.</div>
+                  <div className='flex gap-2'>
+                    <button type='button' className='btn btn-ghost btn-sm flex-1' onClick={() => setIsReviewOpen(false)}>Close</button>
+                    <button type='button' className='btn btn-accent btn-sm flex-1' onClick={() => setIsReviewOpen(false)}>Done</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

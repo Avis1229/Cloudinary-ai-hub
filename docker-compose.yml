@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  aethravia:
+    build: .
+    container_name: aethravia_web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - mongodb
+      - minio
+
+  mongodb:
+    image: mongo:latest
+    container_name: aethravia_mongodb
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=securepassword123
+    ports:
+      - "27018:27017" # Using 27018 to avoid conflicts with other MongoDBs
+    volumes:
+      - aethravia_mongodb_data:/data/db
+
+  minio:
+    image: minio/minio
+    container_name: aethravia_minio
+    restart: unless-stopped
+    ports:
+      - "9010:9000" # Using 9010 for Aethravia MinIO API (Tripdekho likely uses 9000/9001)
+      - "9011:9001" # Using 9011 for Aethravia MinIO Console
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=securepassword123
+    volumes:
+      - aethravia_minio_data:/data
+    command: server /data --console-address ":9001"
+
+volumes:
+  aethravia_mongodb_data:
+  aethravia_minio_data:
