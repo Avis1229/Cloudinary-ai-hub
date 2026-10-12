@@ -120,9 +120,14 @@ const getByQuery = cache(
 );
 
 const getCategories = cache(async (): Promise<string[]> => {
-  await dbConnect();
-  const categories = await ProductModel.find().distinct('category');
-  return categories as string[];
+  try {
+    await dbConnect();
+    const categories = await ProductModel.find().distinct('category');
+    return (categories as string[]) || [];
+  } catch (err) {
+    console.error('[productService] getCategories failed:', err);
+    return ['Body Wash', 'Face Wash', 'Body Scrub', 'Combo'];
+  }
 });
 
 const productService = {

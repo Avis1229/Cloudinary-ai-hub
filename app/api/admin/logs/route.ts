@@ -14,14 +14,14 @@ export async function GET(req: NextRequest) {
     const page = parseInt(url.searchParams.get('page') || '1');
     const limit = parseInt(url.searchParams.get('limit') || '50');
     const level = url.searchParams.get('level');
-    const module = url.searchParams.get('module');
+    const moduleName = url.searchParams.get('module');
 
     const query: any = {};
     if (level && level !== 'All') {
       query.level = level;
     }
-    if (module && module !== 'All') {
-      query.module = module;
+    if (moduleName && moduleName !== 'All') {
+      query.module = moduleName;
     }
 
     const skip = (page - 1) * limit;

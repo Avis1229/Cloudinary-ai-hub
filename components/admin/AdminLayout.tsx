@@ -142,12 +142,22 @@ const AdminLayout = ({
               </div>
               <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/40 mb-3 px-3">System & Settings</div>
               <div className="space-y-1">
-                <Link href="/admin/logs" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-container-highest transition-colors text-on-surface-variant group">
-                  <span className="material-symbols-outlined text-xl group-hover:text-primary transition-colors">history</span>
+                <Link 
+                  href="/admin/logs" 
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors group ${
+                    activeItem === 'logs' ? 'bg-primary/10 text-primary font-bold' : 'hover:bg-surface-container-highest text-on-surface-variant'
+                  }`}
+                >
+                  <span className={`material-symbols-outlined text-xl ${activeItem === 'logs' ? 'text-primary' : 'group-hover:text-primary'} transition-colors`}>history</span>
                   <span className="text-sm font-medium">System Logs</span>
                 </Link>
-                <Link href="/admin/security" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-container-highest transition-colors text-on-surface-variant group">
-                  <span className="material-symbols-outlined text-xl group-hover:text-primary transition-colors">security</span>
+                <Link 
+                  href="/admin/security" 
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors group ${
+                    activeItem === 'security' ? 'bg-primary/10 text-primary font-bold' : 'hover:bg-surface-container-highest text-on-surface-variant'
+                  }`}
+                >
+                  <span className={`material-symbols-outlined text-xl ${activeItem === 'security' ? 'text-primary' : 'group-hover:text-primary'} transition-colors`}>security</span>
                   <span className="text-sm font-medium">Security</span>
                 </Link>
               </div>

@@ -47,10 +47,11 @@ const dbConnect = async () => {
     
     log(`Connecting (attempt ${connectionAttempt}) to cluster...`);
 
+    const isDev = process.env.NODE_ENV === 'development';
     const options = {
-      serverSelectionTimeoutMS: 30000, 
-      socketTimeoutMS: 45000,
-      connectTimeoutMS: 30000,
+      serverSelectionTimeoutMS: isDev ? 5000 : 30000, 
+      socketTimeoutMS: isDev ? 10000 : 45000,
+      connectTimeoutMS: isDev ? 5000 : 30000,
       heartbeatFrequencyMS: 10000,
       maxPoolSize: 10,
       minPoolSize: 1,

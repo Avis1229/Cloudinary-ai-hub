@@ -14,7 +14,7 @@ function mapSegmentToActive(seg: string | null): string {
   const allowed = new Set([
     'dashboard', 'analytics', 'orders', 'products', 'coupons', 'users',
     'carousel', 'testimonials', 'reviews', 'loyalty', 'referral', 'personalization',
-    'offers', 'test-notifications', 'media'
+    'offers', 'test-notifications', 'media', 'settings', 'logs', 'security'
   ]);
   return allowed.has(normalized) ? normalized : 'dashboard';
 }

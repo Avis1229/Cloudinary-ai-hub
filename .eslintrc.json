@@ -3,6 +3,7 @@
   "plugins": ["import"],
   "rules": {
     "import/order": "off",
-    "import/no-anonymous-default-export": "off"
+    "import/no-anonymous-default-export": "off",
+    "react/no-unescaped-entities": "off"
   }
 }
