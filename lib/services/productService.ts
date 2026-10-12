@@ -5,33 +5,58 @@ import ProductModel, { Product } from '@/lib/models/ProductModel';
 export const revalidate = 3600;
 
 const getLatest = cache(async (): Promise<Product[]> => {
-  await dbConnect();
-  const products = await ProductModel.find({}).sort({ createdAt: -1 }).limit(4).lean();
-  return products as unknown as Product[];
+  try {
+    await dbConnect();
+    const products = await ProductModel.find({}).sort({ createdAt: -1 }).limit(4).lean();
+    return (products as unknown as Product[]) || [];
+  } catch (error) {
+    console.error('[productService] getLatest failed:', error);
+    return [];
+  }
 });
 
 const getFeatured = cache(async (): Promise<Product[]> => {
-  await dbConnect();
-  const products = await ProductModel.find({ isFeatured: true }).limit(3).lean();
-  return products as unknown as Product[];
+  try {
+    await dbConnect();
+    const products = await ProductModel.find({ isFeatured: true }).limit(3).lean();
+    return (products as unknown as Product[]) || [];
+  } catch (error) {
+    console.error('[productService] getFeatured failed:', error);
+    return [];
+  }
 });
 
 const getSignature = cache(async (): Promise<Product[]> => {
-  await dbConnect();
-  const products = await ProductModel.find({ isSignature: true }).sort({ createdAt: -1 }).lean();
-  return products as unknown as Product[];
+  try {
+    await dbConnect();
+    const products = await ProductModel.find({ isSignature: true }).sort({ createdAt: -1 }).lean();
+    return (products as unknown as Product[]) || [];
+  } catch (error) {
+    console.error('[productService] getSignature failed:', error);
+    return [];
+  }
 });
 
 const getBySlug = cache(async (slug: string): Promise<Product | null> => {
-  await dbConnect();
-  const product = await ProductModel.findOne({ slug }).lean();
-  return product as unknown as Product | null;
+  try {
+    await dbConnect();
+    const product = await ProductModel.findOne({ slug }).lean();
+    return product as unknown as Product | null;
+  } catch (error) {
+    console.error('[productService] getBySlug failed:', error);
+    return null;
+  }
 });
 
 const getTopRated = cache(async (): Promise<Product[]> => {
-  await dbConnect();
-  const products = await ProductModel.find({}).sort({ rating: -1 }).limit(4).lean();
-  return products as unknown as Product[];
+  try {
+    await dbConnect();
+    const products = await ProductModel.find({}).sort({ rating: -1 }).limit(4).lean();
+    return (products as unknown as Product[]) || [];
+  } catch (error) {
+    console.error('[productService] getTopRated failed:', error);
+    return [];
+  }
 });
 
 const getByQuery = cache(
@@ -49,73 +74,84 @@ const getByQuery = cache(
     pages: number;
     categories: string[];
   }> => {
-    await dbConnect();
+    try {
+      await dbConnect();
 
-    const queryFilter =
-      q && q !== 'all'
-        ? {
-            name: {
-              $regex: q,
-              $options: 'i',
-            },
-          }
-        : {};
-    const categoryFilter = category && category !== 'all' ? { category } : {};
-    const ratingFilter =
-      rating && rating !== 'all'
-        ? {
-            rating: {
-              $gte: Number(rating),
-            },
-          }
-        : {};
-    const priceFilter =
-      price && price !== 'all'
-        ? {
-            price: {
-              $gte: Number(price.split('-')[0]),
-              $lte: Number(price.split('-')[1]),
-            },
-          }
-        : {};
+      const queryFilter =
+        q && q !== 'all'
+          ? {
+              name: {
+                $regex: q,
+                $options: 'i',
+              },
+            }
+          : {};
+      const categoryFilter = category && category !== 'all' ? { category } : {};
+      const ratingFilter =
+        rating && rating !== 'all'
+          ? {
+              rating: {
+                $gte: Number(rating),
+              },
+            }
+          : {};
+      const priceFilter =
+        price && price !== 'all'
+          ? {
+              price: {
+                $gte: Number(price.split('-')[0]),
+                $lte: Number(price.split('-')[1]),
+              },
+            }
+          : {};
 
-    const order =
-      sort === 'lowest'
-        ? { price: 1 }
-        : sort === 'highest'
-        ? { price: -1 }
-        : sort === 'toprated'
-        ? { rating: -1 }
-        : { createdAt: -1 };
+      const order =
+        sort === 'lowest'
+          ? { price: 1 }
+          : sort === 'highest'
+          ? { price: -1 }
+          : sort === 'toprated'
+          ? { rating: -1 }
+          : { createdAt: -1 };
 
-    const pageSize = 6;
-    const products = await ProductModel.find({
-      ...queryFilter,
-      ...categoryFilter,
-      ...priceFilter,
-      ...ratingFilter,
-    })
-      .sort(order as any)
-      .skip(pageSize * (Number(page) - 1))
-      .limit(pageSize)
-      .lean();
+      const pageSize = 6;
+      const products = await ProductModel.find({
+        ...queryFilter,
+        ...categoryFilter,
+        ...priceFilter,
+        ...ratingFilter,
+      })
+        .sort(order as any)
+        .skip(pageSize * (Number(page) - 1))
+        .limit(pageSize)
+        .lean();
 
-    const countProducts = await ProductModel.countDocuments({
-      ...queryFilter,
-      ...categoryFilter,
-      ...priceFilter,
-      ...ratingFilter,
-    });
+      const countProducts = await ProductModel.countDocuments({
+        ...queryFilter,
+        ...categoryFilter,
+        ...priceFilter,
+        ...ratingFilter,
+      });
 
-    const categories = await ProductModel.find().distinct('category');
+      const categories = await ProductModel.find().distinct('category');
 
-    return {
-      products: products as unknown as Product[],
-      countProducts,
-      page,
-      pages: Math.ceil(countProducts / pageSize),
-      categories: categories as string[],
-    };
+      return {
+        products: products as unknown as Product[],
+        countProducts,
+        page,
+        pages: Math.ceil(countProducts / pageSize),
+        categories: categories as string[],
+      };
+    } catch (error) {
+      console.error('[productService] getByQuery failed:', error);
+      return {
+        products: [],
+        countProducts: 0,
+        page: '1',
+        pages: 0,
+        categories: ['Body Wash', 'Face Wash', 'Body Scrub', 'Combo'],
+      };
+    }
   }
 );
 
