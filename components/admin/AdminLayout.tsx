@@ -96,11 +96,11 @@ const AdminLayout = ({
       <aside className={`h-screen w-72 flex-col fixed left-0 top-0 bg-surface border-r border-outline-variant/20 z-40 transition-transform duration-500 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
         <div className="p-8 h-full flex flex-col overflow-y-auto scrollbar-hide">
           <div className="flex items-center gap-3 mb-12 flex-shrink-0">
-            <div className="w-10 h-10 bg-primary flex items-center justify-center rounded-lg shadow-lg shadow-primary/20">
-              <span className="material-symbols-outlined text-on-primary text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>spa</span>
+            <div className="relative w-10 h-10 flex-shrink-0">
+              <Image src="/images/logo_mark.png" alt="BeautyP" fill className="object-contain" />
             </div>
             <div>
-              <h1 className="text-[13px] font-black font-headline text-primary uppercase leading-tight tracking-tighter">BeautyP</h1>
+              <h1 className="text-[14px] font-black font-headline text-primary uppercase leading-tight tracking-tight">BeautyP</h1>
               <p className="text-[9px] uppercase font-bold tracking-[0.3em] text-on-surface-variant/40 mt-0.5">GUARDIAN HUB</p>
             </div>
           </div>

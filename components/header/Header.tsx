@@ -43,19 +43,19 @@ const Header = () => {
 
             <Link
               href='/'
-              className='flex items-center group'
+              className='flex items-center gap-2.5 group'
             >
-              <div className="relative w-8 h-8 sm:w-10 sm:h-10">
+              <div className="relative w-9 h-9 sm:w-11 sm:h-11">
                 <Image
                   src="/images/logo.png"
                   alt="BeautyP Logo"
                   fill
-                  sizes="(max-width: 640px) 32px, 40px"
+                  sizes="(max-width: 640px) 36px, 44px"
                   className="object-contain"
                   priority
                 />
               </div>
-              <div className="hidden sm:block relative h-6 w-32 sm:h-8 sm:w-40 hover:opacity-80 transition-opacity">
+              <div className="hidden sm:block relative h-6 w-32 sm:h-8 sm:w-36 hover:opacity-80 transition-opacity">
                 <Image
                   src="/images/logo-text.png"
                   alt="BeautyP Logo Text"

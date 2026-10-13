@@ -33,17 +33,17 @@ const Footer = async () => {
           
           {/* Column 1: Brand Story & Socials */}
           <div className="space-y-8">
-            <Link href="/" className="flex items-center group">
-              <div className="relative w-10 h-10 md:w-12 md:h-12">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative w-12 h-12 md:w-14 md:h-14">
                 <Image
                   src="/images/logo.png"
                   alt="BeautyP Logo"
                   fill
-                  sizes="48px"
+                  sizes="56px"
                   className="object-contain"
                 />
               </div>
-              <div className="relative h-8 w-40 md:h-10 md:w-48">
+              <div className="relative h-8 w-36 md:h-9 md:w-44">
                 <Image
                   src="/images/logo-text.png"
                   alt="BeautyP Logo Text"

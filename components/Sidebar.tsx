@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { 
   Home, 
@@ -75,7 +76,28 @@ const Sidebar = () => {
         <X size={20} />
       </button>
 
-      <div className="flex-1 overflow-y-auto px-4 py-4 pt-12 scrollbar-hide">
+      <div className="flex-1 overflow-y-auto px-4 py-4 pt-10 scrollbar-hide">
+        {/* Brand Header */}
+        <Link href="/" onClick={toggleDrawer} className="flex items-center gap-3 px-2 mb-6 group">
+          <div className="relative w-11 h-11 flex-shrink-0">
+            <Image
+              src="/images/logo.png"
+              alt="BeautyP Logo"
+              fill
+              sizes="44px"
+              className="object-contain"
+            />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold tracking-tight text-gray-900 group-hover:text-primary transition-colors leading-none">
+              beautyp
+            </h2>
+            <p className="text-[10px] tracking-widest uppercase text-gray-400 mt-1 font-semibold">
+              Beauty • Skin • Rituals
+            </p>
+          </div>
+        </Link>
+
         {/* Primary Site Navigation */}
         <SectionHeader noTopMargin>Menu</SectionHeader>
         <div className="space-y-1">
