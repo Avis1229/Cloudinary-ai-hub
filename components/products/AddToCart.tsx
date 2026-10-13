@@ -22,7 +22,7 @@ const AddToCart = ({ item }: { item: OrderItem }) => {
     increase(item);
     toast.success('Added to your bag', {
       style: {
-        background: '#904917',
+        background: '#4A1E30',
         color: '#fff',
         borderRadius: '8px',
         fontSize: '12px',
@@ -51,7 +51,7 @@ const AddToCart = ({ item }: { item: OrderItem }) => {
     toast.success('Heading to checkout...', {
       duration: 1000,
       style: {
-        background: '#725a39',
+        background: '#556B4E',
         color: '#fff',
         fontSize: '12px',
         fontWeight: 'bold',
@@ -105,7 +105,7 @@ const AddToCart = ({ item }: { item: OrderItem }) => {
           className="flex-grow bg-primary text-on-primary py-4 rounded-lg font-bold tracking-widest uppercase text-[10px] flex items-center justify-center gap-3 hover:opacity-90 transition-all duration-300 shadow-xl shadow-primary/10"
           type="button" 
           onClick={addToCartHandler}
-          style={{ background: 'radial-gradient(circle at center, #904917, #ae602d)' }}
+          style={{ background: 'radial-gradient(circle at center, #4A1E30, #5E283F)' }}
         >
           {existItem ? 'Add More' : 'Add to Bag'}
           <span className="material-symbols-outlined text-lg">shopping_bag</span>

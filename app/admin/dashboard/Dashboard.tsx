@@ -51,9 +51,9 @@ const Dashboard = () => {
         fill: true,
         label: 'This Year',
         data: summary.salesData.map((x: { totalSales: number }) => x.totalSales),
-        borderColor: '#904917',
+        borderColor: '#4A1E30',
         backgroundColor: 'rgba(144, 73, 23, 0.05)',
-        pointBackgroundColor: '#904917',
+        pointBackgroundColor: '#4A1E30',
         tension: 0.4,
         borderWidth: 3,
       },
@@ -70,7 +70,7 @@ const Dashboard = () => {
     ],
   };
 
-  const categoryColors = ['#904917', '#725a39', '#ae602d', '#d4c3b9', '#605041', '#b38062', '#c7a791'];
+  const categoryColors = ['#4A1E30', '#556B4E', '#C899A6', '#6B374B', '#7A9173', '#9E6777', '#A38B95'];
   
   const categoryData = {
     labels: summary.productsData.map((x: { _id: string }) => x._id),

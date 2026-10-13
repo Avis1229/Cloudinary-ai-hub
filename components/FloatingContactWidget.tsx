@@ -81,7 +81,7 @@ const FloatingContactWidget = () => {
         className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-xl transition-all duration-500 pointer-events-auto ${
           isOpen 
             ? 'bg-slate-900 text-white rotate-0' 
-            : 'bg-[#904917] text-white hover:shadow-[#904917]/30'
+            : 'bg-[#4A1E30] text-white hover:shadow-[#4A1E30]/30'
         }`}
         aria-label={isOpen ? "Close contact menu" : "Open contact menu"}
         suppressHydrationWarning
@@ -110,7 +110,7 @@ const FloatingContactWidget = () => {
               <span className="absolute -top-1.5 -right-1.5 flex h-3.5 w-3.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-white shadow-sm flex items-center justify-center">
-                   <span className="w-1 h-1 bg-[#904917] rounded-full"></span>
+                   <span className="w-1 h-1 bg-[#4A1E30] rounded-full"></span>
                 </span>
               </span>
             </motion.div>

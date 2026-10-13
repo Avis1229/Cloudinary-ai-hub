@@ -17,7 +17,7 @@ export default function Newsletter() {
     
     toast.success('Thank you for joining the archive!', {
       style: {
-        background: '#904917',
+        background: '#4A1E30',
         color: '#fff',
         borderRadius: '8px',
         fontSize: '12px',
@@ -27,7 +27,7 @@ export default function Newsletter() {
       },
       iconTheme: {
         primary: '#fff',
-        secondary: '#904917',
+        secondary: '#4A1E30',
       },
     });
     

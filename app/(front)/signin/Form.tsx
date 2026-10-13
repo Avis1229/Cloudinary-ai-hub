@@ -158,7 +158,7 @@ const Form = () => {
 
             <div className="relative mb-8 flex items-center">
               <div className="flex-grow border-t border-outline-variant/20"></div>
-              <span className="px-4 text-[10px] font-label uppercase tracking-widest text-[#725a39]/60">Or use email</span>
+              <span className="px-4 text-[10px] font-label uppercase tracking-widest text-[#556B4E]/60">Or use email</span>
               <div className="flex-grow border-t border-outline-variant/20"></div>
             </div>
 

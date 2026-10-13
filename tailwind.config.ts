@@ -19,7 +19,11 @@ const config: Config = {
       {
         "light": {
           ...daisyuiThemes["light"],
-          primary: '#904917',
+          primary: '#4A1E30',
+          secondary: '#556B4E',
+          accent: '#C899A6',
+          neutral: '#2D1220',
+          'base-100': '#FAF7F2',
           '.toaster-con': {
             'background-color': 'white',
             color: 'black',
@@ -38,48 +42,59 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // New Artisanal Heritage Palette
+        // Luxury Ayurvedic Botanical Palette
         primary: {
-          DEFAULT: '#904917',
+          DEFAULT: '#4A1E30',
           foreground: '#ffffff',
-          container: '#ae602d',
+          container: '#5E283F',
+          light: '#F8EEF2',
         },
         secondary: {
-          DEFAULT: '#725a39',
+          DEFAULT: '#556B4E',
           foreground: '#ffffff',
-          container: '#fbdbb0',
+          container: '#45593E',
+          light: '#EEF4EC',
+        },
+        accent: {
+          DEFAULT: '#C899A6',
+          foreground: '#2D1220',
+          dark: '#9E6777',
+          light: '#FAF2F4',
         },
         surface: {
-          DEFAULT: '#fcf9f4',
-          foreground: '#1c1c19',
-          dim: '#dcdad5',
-          bright: '#fcf9f4',
+          DEFAULT: '#FAF7F2',
+          foreground: '#2D1220',
+          dim: '#EBE5DC',
+          bright: '#FFFFFF',
           container: {
-            DEFAULT: '#f0ede8',
-            low: '#f6f3ee',
-            lowest: '#ffffff',
-            high: '#ebe8e3',
-            highest: '#e5e2dd',
+            DEFAULT: '#F3EFE8',
+            low: '#F8F5EE',
+            lowest: '#FFFFFF',
+            high: '#EAE4DA',
+            highest: '#E2DBCE',
           }
         },
         'on-primary': '#ffffff',
         'on-secondary': '#ffffff',
-        'on-secondary-container': '#765f3d',
-        'on-surface': '#1c1c19',
-        'on-surface-variant': '#50443d',
+        'on-secondary-container': '#45593E',
+        'on-surface': '#2D1220',
+        'on-surface-variant': '#614F57',
         brand: {
-          DEFAULT: '#904917',
-          black: '#1c1c19',
+          DEFAULT: '#4A1E30',
+          secondary: '#556B4E',
+          accent: '#C899A6',
+          black: '#2D1220',
+          cream: '#FAF7F2',
         },
         outline: {
-          DEFAULT: '#82746c',
-          variant: '#d4c3b9',
+          DEFAULT: '#8A7B81',
+          variant: '#D9CCD1',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: '#fcf9f4',
-        foreground: '#1c1c19',
+        background: '#FAF7F2',
+        foreground: '#2D1220',
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
@@ -87,10 +102,6 @@ const config: Config = {
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',

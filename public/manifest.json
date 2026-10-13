@@ -4,8 +4,8 @@
   "description": "Embrace the earth, unveil your personality - Your destination for natural skincare and body care",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#FAF7F2",
+  "theme_color": "#4A1E30",
   "orientation": "portrait-primary",
   "scope": "/",
   "icons": [

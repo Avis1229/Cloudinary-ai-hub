@@ -28,7 +28,7 @@ const ProductItem = ({ product }: { product: Product }) => {
     });
     toast.success('Added to your bag', {
       style: {
-        background: '#904917',
+        background: '#4A1E30',
         color: '#fff',
         borderRadius: '8px',
         fontSize: '12px',
@@ -38,7 +38,7 @@ const ProductItem = ({ product }: { product: Product }) => {
       },
       iconTheme: {
         primary: '#fff',
-        secondary: '#904917',
+        secondary: '#4A1E30',
       },
     });
   };

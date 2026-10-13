@@ -90,7 +90,7 @@ class EmailService {
     body { font-family: 'Georgia', serif; margin: 0; padding: 0; background-color: #fcfbf9; color: #1a1a1a; }
     .container { max-width: 600px; margin: 40px auto; background-color: #ffffff; border: 1px solid #e5e1da; }
     .header { padding: 40px 30px; text-align: center; border-bottom: 1px solid #f0eee9; }
-    .header h1 { margin: 0; font-size: 24px; font-style: italic; color: #904917; font-weight: 300; }
+    .header h1 { margin: 0; font-size: 24px; font-style: italic; color: #4A1E30; font-weight: 300; }
     .content { padding: 50px 40px; text-align: center; }
     .otp-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #7c7c7c; margin-bottom: 20px; font-weight: 700; }
     .otp-code { font-size: 48px; letter-spacing: 0.15em; color: #1a1a1a; margin: 30px 0; font-family: 'Helvetica', sans-serif; font-weight: 200; }
@@ -165,13 +165,13 @@ This code will expire in 10 minutes.
     body { font-family: 'Georgia', serif; margin: 0; padding: 0; background-color: #fcf9f4; color: #1c1c19; }
     .container { max-width: 600px; margin: 40px auto; background-color: #ffffff; border: 1px solid #e5e2dd; border-radius: 4px; overflow: hidden; }
     .header { padding: 40px; text-align: center; background-color: #fcf9f4; border-bottom: 1px solid #e5e2dd; }
-    .header h1 { margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: #904917; font-family: 'Times New Roman', serif; }
+    .header h1 { margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: #4A1E30; font-family: 'Times New Roman', serif; }
     .content { padding: 60px 40px; text-align: center; }
-    .welcome-text { font-size: 14px; text-transform: uppercase; letter-spacing: 0.3em; color: #725a39; margin-bottom: 24px; font-weight: 600; }
+    .welcome-text { font-size: 14px; text-transform: uppercase; letter-spacing: 0.3em; color: #556B4E; margin-bottom: 24px; font-weight: 600; }
     .main-title { font-size: 24px; line-height: 1.4; color: #1c1c19; margin-bottom: 32px; font-style: italic; }
     .otp-container { background-color: #f6f3ee; padding: 40px; border-radius: 2px; margin: 40px 0; }
     .otp-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #82746c; margin-bottom: 16px; font-weight: 700; }
-    .otp-code { font-size: 56px; letter-spacing: 0.2em; color: #904917; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 200; margin: 0; }
+    .otp-code { font-size: 56px; letter-spacing: 0.2em; color: #4A1E30; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 200; margin: 0; }
     .expiry { font-size: 12px; color: #82746c; font-style: italic; margin-top: 40px; }
     .footer { padding: 40px; text-align: center; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: #d4c3b9; background-color: #fcf9f4; border-top: 1px solid #e5e2dd; }
   </style>

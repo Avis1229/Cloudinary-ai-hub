@@ -99,7 +99,7 @@ const OrderDetails = ({ orderId, razorpayKeyId }: IOrderDetails) => {
           name: session?.user?.name || '',
           email: session?.user?.email || '',
         },
-        theme: { color: '#725a39' },
+        theme: { color: '#4A1E30' },
       };
       
       const rzp = new (window as any).Razorpay(options);

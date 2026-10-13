@@ -115,7 +115,7 @@ const Form = () => {
             toast.error('Exchange cancelled');
           },
         },
-        theme: { color: '#725a39' },
+        theme: { color: '#4A1E30' },
         prefill: {
           name: shippingAddress.fullName,
           email: session?.user?.email || '',

@@ -19,38 +19,39 @@ export default function FrontLayout({
       <PricingInitializer />
       <div className='drawer-content'>
         <div className='flex min-h-screen flex-col overflow-x-hidden'>
-          <div className="bg-primary text-white text-center py-2 text-xs md:text-sm font-semibold tracking-wider flex justify-center items-center gap-2 md:gap-4 px-4 uppercase font-body z-40 relative">
-            <span>Made in India</span>
-            <span className="hidden sm:inline">•</span>
-            <span>FDA Registered</span>
-            <span className="hidden sm:inline">•</span>
-            <span>Cruelty Free</span>
-            <span className="hidden sm:inline">•</span>
-            <span>Vegan</span>
-          </div>
-          {/* Scrolling marquee ticker below the trust bar */}
-          <div className="overflow-hidden bg-[#1a0a00] text-[#f5c97a] py-[7px] text-[11px] md:text-[12.5px] font-semibold tracking-wide font-body z-40 relative border-b border-[#f5c97a]/20">
-            <div
-              className="flex whitespace-nowrap"
-              style={{
-                animation: 'marquee-scroll 28s linear infinite',
-              }}
-            >
-              {[...Array(4)].map((_, i) => (
-                <span key={i} className="flex items-center gap-0 shrink-0">
-                  <span className="mx-6">🌿 India&apos;s First Premium Body Care powered by Multani Mitti &amp; Reetha</span>
-                  <span className="mx-2 text-[#f5c97a]/50">✦</span>
-                  <span className="mx-6">✨ Natural Tan Removal + Body Odor Control</span>
-                  <span className="mx-2 text-[#f5c97a]/50">✦</span>
+          {/* Luxury Sage Green Announcement Bar */}
+          <div className="bg-[#4F6449] text-white py-2 px-4 sm:px-8 text-[11px] sm:text-xs font-medium tracking-wide z-40 relative border-b border-black/5">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 text-center md:text-left">
+              {/* Left: Quality & Ethics Certifications */}
+              <div className="flex items-center justify-center flex-wrap gap-3 sm:gap-4 text-[10.5px] sm:text-[11px] tracking-wider uppercase font-semibold text-white/95">
+                <span className="flex items-center gap-1.5">
+                  <span className="text-sm">🍃</span> Made In India
                 </span>
-              ))}
+                <span className="text-white/30">|</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-sm">📜</span> FDA Registered
+                </span>
+                <span className="text-white/30">|</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-sm">🐰</span> Cruelty Free
+                </span>
+                <span className="text-white/30">|</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-sm">🌱</span> Vegan
+                </span>
+              </div>
+
+              {/* Right: Signature Wellness Highlights */}
+              <div className="hidden lg:flex items-center gap-3 text-[11px] text-white/90">
+                <span className="flex items-center gap-1.5">
+                  <span>✨</span> Natural Tan Removal • Body Odor Control
+                </span>
+                <span className="text-white/30">|</span>
+                <span className="flex items-center gap-1.5">
+                  <span>🌿</span> India&apos;s First Premium Body Care powered by Multani Mitti &amp; Reetha
+                </span>
+              </div>
             </div>
-            <style>{`
-              @keyframes marquee-scroll {
-                0%   { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-              }
-            `}</style>
           </div>
           <Header />
           <main className='flex-grow'>{children}</main>
