@@ -38,7 +38,7 @@ export default function ReferralPage() {
 
   const shareWhatsApp = () => {
     const text = encodeURIComponent(
-      `Hey! Check out Aethravia for premium skincare. Use my referral link and get a special welcome reward: ${referralLink}`
+      `Hey! Check out BeautyP for premium skincare. Use my referral link and get a special welcome reward: ${referralLink}`
     );
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };
@@ -47,7 +47,7 @@ export default function ReferralPage() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Join Aethravia',
+          title: 'Join BeautyP',
           text: 'Experience premium skincare with my referral link!',
           url: referralLink,
         });
@@ -66,7 +66,7 @@ export default function ReferralPage() {
            <p className="text-[10px] font-bold uppercase tracking-[0.6em] text-primary mb-4">Heritage Expansion</p>
            <h1 className="font-headline text-5xl md:text-8xl text-on-surface italic mb-8">Invite to the Circle</h1>
            <p className="text-secondary font-body max-w-3xl mx-auto opacity-70 leading-relaxed text-lg">
-             True wisdom is meant to be shared. Invite your circle to experience Aethravia,
+             True wisdom is meant to be shared. Invite your circle to experience BeautyP,
              and both of you shall be rewarded with artisanal gifts and credits for your next ritual.
            </p>
         </div>

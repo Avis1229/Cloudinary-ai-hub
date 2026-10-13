@@ -6,7 +6,7 @@ import dbConnect from '@/lib/dbConnect';
 import SiteSettingsModel from '@/lib/models/SiteSettingsModel';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Aethravia',
+  title: 'Contact Us | BeautyP',
   description: 'Whether you seek guidance on a personalized ritual or have a question about our artisanal ingredients, our archive is open to you.',
 };
 
@@ -18,7 +18,7 @@ export default async function ContactPage() {
   } catch (e) {
     console.error('Contact page failed to load settings', e);
   }
-  const email = settings?.supportEmail || 'aethravia@gmail.com';
+  const email = settings?.supportEmail || 'support@beautyp.com';
   const phone = settings?.supportPhone || '+91-9259775846';
   const phoneClean = phone.replace(/[^0-9+]/g, '');
   const address = settings?.shopAddress || 'H.No.46, Mohalla Mohammad Wasil Near Hadri Masjid, Pilibhit, UP-262001 (India)';
@@ -100,7 +100,7 @@ export default async function ContactPage() {
             />
             <div className="absolute inset-0 bg-primary/5"></div>
             <div className="absolute bottom-6 left-6 bg-surface p-4 shadow-xl rounded">
-              <p className="font-headline text-primary text-lg">Aethravia Flagship</p>
+              <p className="font-headline text-primary text-lg">BeautyP Flagship</p>
               <p className="text-sm font-body text-secondary">Janpath Road, New Delhi</p>
             </div>
           </div>

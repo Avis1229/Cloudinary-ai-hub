@@ -29,7 +29,7 @@ export async function GET() {
     return NextResponse.json({
       supportPhone: '+91-XXXX-XXXXXX',
       whatsappNumber: '+91-XXXX-XXXXXX',
-      supportEmail: 'aethravia@gmail.com',
+      supportEmail: 'support@beautyp.com',
       shopAddress: '',
       shippingPrice: 200,
       freeShippingThreshold: 2000,

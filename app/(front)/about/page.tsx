@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'Our Story | Aethravia',
-  description: 'A dialogue between ancestral memory and modern science. Learn about the genesis of Aethravia.',
+  title: 'Our Story | BeautyP',
+  description: 'A dialogue between ancestral memory and modern science. Learn about the genesis of BeautyP.',
 };
 
 export default function AboutPage() {
@@ -53,23 +53,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2. How Aethravia Began */}
+      {/* 2. How BeautyP Began */}
       <section className="bg-surface-container-low px-8 md:px-24 py-16 md:py-32">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 md:gap-20 items-center">
           <div className="w-full md:w-1/2 relative group">
             <div className="absolute -top-6 -left-6 w-full h-full bg-surface-container-highest -z-10 rounded-lg"></div>
             <img 
               className="w-full aspect-[4/5] object-cover rounded shadow-2xl transition-transform duration-500 group-hover:-translate-y-2" 
-              alt="How Aethravia Began" 
-              src="/images/aethravia-began.jpeg"
+              alt="How BeautyP Began" 
+              src="/images/beautyp-began.jpeg"
             />
           </div>
           <div className="w-full md:w-1/2">
             <span className="text-xs uppercase tracking-[0.4em] text-primary font-bold mb-4 block">The Genesis</span>
-            <h2 className="font-headline text-3xl md:text-4xl text-on-surface mb-6 leading-tight">How Aethravia Began</h2>
+            <h2 className="font-headline text-3xl md:text-4xl text-on-surface mb-6 leading-tight">How BeautyP Began</h2>
             <div className="space-y-5 text-on-surface-variant leading-loose text-base md:text-lg font-light font-body">
               <p>
-                Aethravia began with a simple yet relatable problem. Its founder, Arpita Kashyap, struggled with frequent sun tanning and often relied on traditional remedies like Multani Mitti. While these natural solutions were effective, they were not always practical for a busy lifestyle. This inspired a simple question: why not create skincare products that deliver the benefits of trusted natural ingredients in a convenient, ready-to-use form? What started as personal research and home-crafted formulations soon evolved into Aethravia—a brand committed to blending the wisdom of nature with everyday convenience.
+                BeautyP began with a simple yet relatable problem. Its founder, Arpita Kashyap, struggled with frequent sun tanning and often relied on traditional remedies like Multani Mitti. While these natural solutions were effective, they were not always practical for a busy lifestyle. This inspired a simple question: why not create skincare products that deliver the benefits of trusted natural ingredients in a convenient, ready-to-use form? What started as personal research and home-crafted formulations soon evolved into BeautyP—a brand committed to blending the wisdom of nature with everyday convenience.
               </p>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center">
             <h2 className="font-headline text-3xl md:text-4xl text-on-surface mb-4">Our Philosophy</h2>
-            <p className="font-body text-secondary tracking-widest uppercase text-xs">The Aethravia Standard</p>
+            <p className="font-body text-secondary tracking-widest uppercase text-xs">The BeautyP Standard</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-outline-variant/10">
             {/* Card 1 */}
@@ -162,7 +162,7 @@ export default function AboutPage() {
                 <div className="aspect-[3/4] overflow-hidden rounded-lg">
                   <img 
                     className="w-full h-full object-cover grayscale brightness-90 contrast-110" 
-                    alt="Professional and serene portrait of Arpita Kashyap, founder of Aethravia, in a modern artisanal studio" 
+                    alt="Professional and serene portrait of Arpita Kashyap, founder of BeautyP, in a modern artisanal studio" 
                     src="/founder-arpita.jpeg"
                   />
                 </div>
@@ -173,7 +173,7 @@ export default function AboutPage() {
               <div className="lg:w-2/3 max-w-2xl">
                 <h4 className="font-headline text-2xl md:text-3xl text-on-surface mb-6">A Message from Our Founder</h4>
                 <blockquote className="text-xl md:text-2xl font-headline text-secondary leading-relaxed mb-8 italic">
-                  "Aethravia isn't just about skincare; it's about reclaiming the moments of quietude we've lost to a fast-paced world. We invite you to slow down, feel the texture of the earth on your skin, and remember who you are."
+                  "BeautyP isn't just about skincare; it's about reclaiming the moments of quietude we've lost to a fast-paced world. We invite you to slow down, feel the texture of the earth on your skin, and remember who you are."
                 </blockquote>
                 <div>
                   <p className="font-bold font-body text-on-surface tracking-widest uppercase">Arpita Kashyap</p>
@@ -188,7 +188,7 @@ export default function AboutPage() {
                 <div className="aspect-[3/4] overflow-hidden rounded-lg">
                   <img 
                     className="w-full h-full object-cover grayscale brightness-90 contrast-110" 
-                    alt="Professional studio portrait of Prajjwal Kashyap, co-founder of Aethravia, with a warm, confident expression." 
+                    alt="Professional studio portrait of Prajjwal Kashyap, co-founder of BeautyP, with a warm, confident expression." 
                     src="/prajjwal-co-founder.jpeg"
                   />
                 </div>

@@ -14,7 +14,7 @@ import productService from '@/lib/services/productService';
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Aethravia',
+    absolute: 'BeautyP',
   },
   description: 'Grounded elegance for the modern heritage seeker. Discover artisanal skin rituals crafted from Multani Mitti and Reetha.',
 };

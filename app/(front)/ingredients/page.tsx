@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'Ingredients & Craftsmanship | Aethravia',
+  title: 'Ingredients & Craftsmanship | BeautyP',
   description: 'We believe in the radical transparency of nature. Each element in our archive is selected for its ancient efficacy and sourced with deep respect for the earth.',
 };
 
@@ -91,7 +91,7 @@ export default function IngredientsPage() {
           <div className="max-w-3xl mx-auto mt-24 text-center">
             <h3 className="text-3xl font-headline text-primary mb-6">Why We Chose These Ingredients</h3>
             <p className="text-on-surface-variant text-lg leading-relaxed font-body mb-6">
-              At Aethravia, every ingredient is selected with intention. While modern skincare often relies on trending actives, we turned to nature's time-tested remedies. Reetha and Multani Mitti were chosen for their remarkable ability to cleanse deeply, absorb excess oil, help reduce body odor, and support the skin's natural radiance.
+              At BeautyP, every ingredient is selected with intention. While modern skincare often relies on trending actives, we turned to nature's time-tested remedies. Reetha and Multani Mitti were chosen for their remarkable ability to cleanse deeply, absorb excess oil, help reduce body odor, and support the skin's natural radiance.
             </p>
             <p className="text-on-surface-variant text-lg leading-relaxed font-body">
               What makes this combination special is the harmony between these two traditional ingredients—working together to purify, refresh, and restore the skin naturally. This thoughtful pairing reflects our commitment to creating skincare that is both effective and rooted in nature.
@@ -136,7 +136,7 @@ export default function IngredientsPage() {
       {/* Our Craftsmanship Process */}
       <section className="py-24 bg-surface-container-highest">
         <div className="max-w-7xl mx-auto px-8">
-          <h2 className="text-4xl md:text-5xl font-headline mb-16 text-center text-on-surface">The Art of Aethravia</h2>
+          <h2 className="text-4xl md:text-5xl font-headline mb-16 text-center text-on-surface">The Art of BeautyP</h2>
           
           <div className="relative flex flex-col md:flex-row gap-12">
             <div className="flex-1 relative bg-surface-container-low p-8 rounded-lg shadow-sm mt-8 md:mt-0">

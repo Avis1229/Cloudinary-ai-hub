@@ -47,7 +47,7 @@ export async function POST(req: Request) {
       subject: `Ritual Inquiry Received: ${sanitizedSubject}`,
       html: `
         <div style="font-family: serif; color: #2D4B3C; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; padding: 40px; border-radius: 12px;">
-          <h2 style="color: #2D4B3C; font-style: italic;">Greetings from Aethravia</h2>
+          <h2 style="color: #2D4B3C; font-style: italic;">Greetings from BeautyP</h2>
           <p>Dear ${sanitizedName},</p>
           <p>We have received your message regarding "<strong>${sanitizedSubject}</strong>".</p>
           <p>Our artisans are reviewing your inquiry and will connect with you shortly. Thank you for your patience.</p>

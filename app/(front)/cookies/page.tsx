@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy | Aethravia',
-  description: 'Cookie Policy of Heuk Care Private Limited for Aethravia',
+  title: 'Cookie Policy | BeautyP',
+  description: 'Cookie Policy of Heuk Care Private Limited for BeautyP',
 };
 
 export default function CookiePolicyPage() {
@@ -14,14 +14,14 @@ export default function CookiePolicyPage() {
           <h1 className="text-4xl md:text-5xl font-headline tracking-tight text-primary mb-2">Cookie Policy</h1>
           <p className="font-bold text-sm uppercase tracking-widest text-primary/60 mb-12">Heuk Care Private Limited</p>
 
-          <p>This Cookie Policy explains how Heuk Care Private Limited ("we," "us," or "our") uses cookies and similar tracking technologies on the Aethravia e-commerce platform ("Platform," "Service," or "Aethravia"). This policy provides you with clear and comprehensive information about the cookies we use, why we use them, and how you can control them.</p>
-          <p>By accessing or using Aethravia, you acknowledge that you have read and understood this Cookie Policy. If you do not agree with our practices, please do not use our Platform.</p>
+          <p>This Cookie Policy explains how Heuk Care Private Limited ("we," "us," or "our") uses cookies and similar tracking technologies on the BeautyP e-commerce platform ("Platform," "Service," or "BeautyP"). This policy provides you with clear and comprehensive information about the cookies we use, why we use them, and how you can control them.</p>
+          <p>By accessing or using BeautyP, you acknowledge that you have read and understood this Cookie Policy. If you do not agree with our practices, please do not use our Platform.</p>
 
           <h2 className="text-2xl font-headline text-primary mt-12 mb-6">1. Contact Information</h2>
           <p>If you have any questions or concerns about our use of cookies or this Cookie Policy, please contact us at:</p>
           <p>
             <strong>Heuk Care Private Limited</strong><br/>
-            Email: aethravia@gmail.com
+            Email: support@beautyp.com
           </p>
 
           <h2 className="text-2xl font-headline text-primary mt-12 mb-6">2. What Are Cookies</h2>

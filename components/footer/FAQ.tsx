@@ -11,27 +11,27 @@ type FAQ = {
 
 const faqs: FAQ[] = [
   {
-    q: 'What is Aethravia 30-second skin care?',
+    q: 'What is BeautyP 30-second skin care?',
     a: 'Our signature routine designed for busy lifestyles. It focuses on high-efficacy botanical ingredients that absorb rapidly and provide immediate hydration and protection in just 30 seconds.',
   },
   {
     q: 'Are your products only for women?',
-    a: 'Not at all. Aethravia products are formulated based on skin concerns, not gender. Our natural ingredients work effectively on all skin types.',
+    a: 'Not at all. BeautyP products are formulated based on skin concerns, not gender. Our natural ingredients work effectively on all skin types.',
   },
   {
     q: 'Why should I prioritize natural skincare?',
     a: 'Natural skincare avoids harsh synthetic chemicals that can disrupt your skin\'s barrier. Botanical ingredients provide vitamins, antioxidants, and fatty acids that nourish without irritation.',
   },
   {
-    q: 'Where are Aethravia products made?',
+    q: 'Where are BeautyP products made?',
     a: 'Our products are ethically manufactured in our state-of-the-art laboratory in India, using sustainably sourced ingredients from across the globe.',
   },
   {
-    q: 'Is Aethravia a Clean, Cruelty-free and Vegan brand?',
+    q: 'Is BeautyP a Clean, Cruelty-free and Vegan brand?',
     a: 'Yes, we are 100% committed to being clean, cruelty-free, and vegan. We never test on animals and our formulations are free from toxins like parabens and sulfates.',
   },
   {
-    q: 'How does Aethravia ensure sustainability?',
+    q: 'How does BeautyP ensure sustainability?',
     a: 'Sustainability is at our core. We use recyclable packaging, minimize water waste during production, and partner with local farmers for organic raw materials.',
   },
 ];

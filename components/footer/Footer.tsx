@@ -15,13 +15,13 @@ const Footer = async () => {
   }
 
   const currentYear = new Date().getFullYear();
-  const email = settings?.supportEmail || 'aethravia@gmail.com';
+  const email = settings?.supportEmail || 'support@beautyp.com';
   const address = settings?.shopAddress || 'H.No.46, Mohalla Mohammad Wasil Near Hadri Masjid, Pilibhit, UP-262001 (India)';
   const phone = settings?.supportPhone || '+91-XXXX-XXXXXX';
   const phoneClean = phone.replace(/[^0-9+]/g, '');
   const rawWhatsapp = (settings?.whatsappNumber || phone).replace(/[^0-9+]/g, '');
   const whatsappUrlSafe = rawWhatsapp.startsWith('+') ? rawWhatsapp.substring(1) : rawWhatsapp;
-  const whatsappUrl = `https://wa.me/${whatsappUrlSafe}?text=Hello! I have a query regarding Aethravia products.`;
+  const whatsappUrl = `https://wa.me/${whatsappUrlSafe}?text=Hello! I have a query regarding BeautyP products.`;
 
   return (
     <footer className="bg-[#e5e2dd] relative overflow-hidden text-[#1c1c19]">
@@ -37,7 +37,7 @@ const Footer = async () => {
               <div className="relative w-10 h-10 md:w-12 md:h-12">
                 <Image
                   src="/images/logo.png"
-                  alt="Aethravia Logo"
+                  alt="BeautyP Logo"
                   fill
                   sizes="48px"
                   className="object-contain"
@@ -46,7 +46,7 @@ const Footer = async () => {
               <div className="relative h-8 w-40 md:h-10 md:w-48">
                 <Image
                   src="/images/logo-text.png"
-                  alt="Aethravia Logo Text"
+                  alt="BeautyP Logo Text"
                   fill
                   className="object-contain"
                 />
@@ -56,7 +56,7 @@ const Footer = async () => {
             <div className="space-y-4">
               <h2 className="text-xl font-serif tracking-tight text-primary">Our Heritage</h2>
               <p className="text-sm font-medium leading-relaxed text-secondary opacity-90">
-                Aethravia is built on the ancient wisdom of Multani Mitti and Reetha. 
+                BeautyP is built on the ancient wisdom of Multani Mitti and Reetha. 
                 Inspired by the earth, crafted for the soul.
               </p>
             </div>
@@ -64,7 +64,7 @@ const Footer = async () => {
             {/* Social Area */}
             <div className="flex items-center space-x-6 pt-4">
               <a 
-                href="https://www.instagram.com/_aethravia/?hl=en" 
+                href="https://www.instagram.com/beautyp/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-secondary hover:text-primary transition-colors flex items-center space-x-2 group"
@@ -157,7 +157,7 @@ const Footer = async () => {
         <div className="pt-10 border-t border-primary/10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-center md:text-left">
             <p className="text-[10px] font-medium text-secondary/60 tracking-wider">
-              &copy; {currentYear} Aethravia. All Rights Reserved.
+              &copy; {currentYear} BeautyP. All Rights Reserved.
             </p>
             
             <div className="flex items-center space-x-10">

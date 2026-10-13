@@ -1,8 +1,8 @@
-# Aethravia Store 🛒✨
+# BeautyP Store 🛒✨
 
-![Aethravia Storefront Placeholder](https://via.placeholder.com/1200x400?text=Aethravia+Store)
+![BeautyP Storefront Placeholder](https://via.placeholder.com/1200x400?text=BeautyP+Store)
 
-Aethravia is a premium, full-stack e-commerce platform built with modern web technologies, focusing on cutting-edge security, dynamic personalized user experiences, and high performance.
+BeautyP is a premium, full-stack e-commerce platform built with modern web technologies, focusing on cutting-edge security, dynamic personalized user experiences, and high performance.
 
 ## 🚀 Tech Stack
 
@@ -87,4 +87,4 @@ Navigate to [http://localhost:3000](http://localhost:3000) to see your app runni
 ## 📜 License
 This project is proprietary and confidential.
 
-*Maintained by the Aethravia Engineering Team.*
+*Maintained by the BeautyP Engineering Team.*

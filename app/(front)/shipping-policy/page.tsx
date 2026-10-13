@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'Shipping Policy | Aethravia',
-  description: 'Shipping Policy for Aethravia',
+  title: 'Shipping Policy | BeautyP',
+  description: 'Shipping Policy for BeautyP',
 };
 
 export default function ShippingPage() {
@@ -13,7 +13,7 @@ export default function ShippingPage() {
         <div className="max-w-4xl mx-auto prose prose-stone text-secondary font-body font-light leading-loose">
           <h1 className="text-4xl md:text-5xl font-headline tracking-tight text-primary mb-12 uppercase underline underline-offset-8 decoration-1">Shipping Policy</h1>
 
-          <p>This Shipping Policy outlines the shipping terms and conditions applicable to orders placed through <a href="https://aethravia.com/" className="text-primary hover:underline">https://aethravia.com/</a>. By placing an order with us, you agree to the terms outlined below.</p>
+          <p>This Shipping Policy outlines the shipping terms and conditions applicable to orders placed through <a href="https://beautyp.com/" className="text-primary hover:underline">https://beautyp.com/</a>. By placing an order with us, you agree to the terms outlined below.</p>
 
           <h2 className="text-2xl font-headline text-primary mt-12 mb-6">1. SHIPPING CHARGES</h2>
           <p>We offer:</p>
@@ -40,7 +40,7 @@ export default function ShippingPage() {
           <p className="mt-4 italic">Please note that delivery timelines are estimates and may vary due to courier delays, weather conditions, public holidays, remote locations, or other circumstances beyond our control.</p>
 
           <h2 className="text-2xl font-headline text-primary mt-12 mb-6">3. SHIPPING LOCATIONS</h2>
-          <p>Currently, Aethravia ships only within India.</p>
+          <p>Currently, BeautyP ships only within India.</p>
           <p>We do not offer international shipping at this time.</p>
 
           <h2 className="text-2xl font-headline text-primary mt-12 mb-6">4. ORDER TRACKING</h2>

@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button'
 import FAQSection from '@/components/footer/FAQ'
 
 export const metadata: Metadata = {
-  title: 'Help & Support - Aethravia',
-  description: 'Get help with your Aethravia orders, account, and shopping experience',
+  title: 'Help & Support - BeautyP',
+  description: 'Get help with your BeautyP orders, account, and shopping experience',
 }
 
 export default function HelpPage() {
@@ -75,8 +75,8 @@ export default function HelpPage() {
                 <Mail className="w-8 h-8 mx-auto text-green-100" />
               </div>
               <p className="font-semibold text-white mb-2">Email Support</p>
-              <a href="mailto:aethravia@gmail.com" className="text-green-100 hover:text-white">
-                aethravia@gmail.com
+              <a href="mailto:support@beautyp.com" className="text-green-100 hover:text-white">
+                support@beautyp.com
               </a>
             </div>
             

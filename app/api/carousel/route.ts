@@ -28,7 +28,7 @@ export const GET = async () => {
           key: 'banner0',
           href: '/shop',
           src: '/images/banner/banner0.jpg',
-          alt: 'Aethravia - Natural Skincare Collection',
+          alt: 'BeautyP - Natural Skincare Collection',
         },
         {
           key: 'banner1',
@@ -54,7 +54,7 @@ export const GET = async () => {
         key: 'banner0',
         href: '/shop',
         src: '/images/banner/banner0.jpg',
-        alt: 'Aethravia - Natural Skincare Collection',
+        alt: 'BeautyP - Natural Skincare Collection',
       },
       {
         key: 'banner1',

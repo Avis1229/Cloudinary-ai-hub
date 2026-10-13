@@ -17,7 +17,7 @@ const siteSettingsSchema = new mongoose.Schema(
   {
     supportPhone: { type: String, default: '+91-XXXX-XXXXXX' },
     whatsappNumber: { type: String, default: '' }, // Falls back to supportPhone if empty
-    supportEmail: { type: String, default: 'aethravia@gmail.com' },
+    supportEmail: { type: String, default: 'support@beautyp.com' },
     shopAddress: {
       type: String,
       default:

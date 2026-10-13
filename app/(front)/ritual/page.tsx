@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Rituals | Aethravia Artisanal Heritage',
+  title: 'Rituals | BeautyP Artisanal Heritage',
   description: 'Explore the artisanal heritage and our ritual guides.',
 };
 
@@ -86,7 +86,7 @@ export default function RitualPage() {
 
             <div className="group w-full">
               <div className="w-full bg-surface-container rounded-3xl overflow-hidden shadow-xl border border-outline-variant/10">
-                <img alt="Aethravia Complete Collection" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" src="/images/below-3.jpeg" />
+                <img alt="BeautyP Complete Collection" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" src="/images/below-3.jpeg" />
               </div>
             </div>
           </div>

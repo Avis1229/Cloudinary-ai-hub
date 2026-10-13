@@ -160,7 +160,7 @@ export default function AdminSettingsPage() {
               <input
                 type="email"
                 className="input input-bordered w-full"
-                placeholder="support@aethravia.com"
+                placeholder="support@beautyp.com"
                 value={form.supportEmail}
                 onChange={(e) => setForm((f) => ({ ...f, supportEmail: e.target.value }))}
               />

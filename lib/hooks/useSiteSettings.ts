@@ -14,7 +14,7 @@ type SiteSettings = {
 const DEFAULTS: SiteSettings = {
   supportPhone: '+91-XXXX-XXXXXX',
   whatsappNumber: '+91-XXXX-XXXXXX',
-  supportEmail: 'aethravia@gmail.com',
+  supportEmail: 'support@beautyp.com',
   shopAddress: '',
 };
 

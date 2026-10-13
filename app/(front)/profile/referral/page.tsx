@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import ReferralDetails from '@/components/profile/ReferralDetails';
 
 export const metadata = {
-  title: 'Referral Program | Aethravia',
+  title: 'Referral Program | BeautyP',
 };
 
 const ReferralPage = () => {

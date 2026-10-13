@@ -16,8 +16,8 @@ const faqs = [
     answer: "We're here to help. Contact us through email or WhatsApp, and our team will assist you in choosing the product that best fits your skincare needs."
   },
   {
-    question: "Can I return my AETHRAVIA products?",
-    answer: "For hygiene and safety reasons, AETHRAVIA accepts returns only on unopened and unused products within 14 days of delivery. In case of a damaged or incorrect item, our concierge team will be happy to assist you."
+    question: "Can I return my BeautyP products?",
+    answer: "For hygiene and safety reasons, BeautyP accepts returns only on unopened and unused products within 14 days of delivery. In case of a damaged or incorrect item, our concierge team will be happy to assist you."
   }
 ];
 

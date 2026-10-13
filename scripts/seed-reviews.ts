@@ -38,7 +38,7 @@ const fakeReviews = [
     name: "Neha Gupta",
     city: "Bangalore",
     rating: 5,
-    quote: "I’ve tried many premium brands, but Aethravia’s formulations feel so authentic and pure. Will definitely repurchase.",
+    quote: "I’ve tried many premium brands, but BeautyP’s formulations feel so authentic and pure. Will definitely repurchase.",
     isVerifiedPurchase: true,
   },
   {

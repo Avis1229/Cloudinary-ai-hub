@@ -27,9 +27,9 @@ export default function LoyaltyPage() {
       <div className="max-w-7xl mx-auto px-4 relative z-10 pt-24">
         <div className="mb-20 text-center">
            <p className="text-[10px] font-bold uppercase tracking-[0.6em] text-primary mb-4">Heritage Rewards</p>
-           <h1 className="font-headline text-5xl md:text-8xl text-on-surface italic mb-8">The vault of Aethravia</h1>
+           <h1 className="font-headline text-5xl md:text-8xl text-on-surface italic mb-8">The vault of BeautyP</h1>
            <p className="text-secondary font-body max-w-3xl mx-auto opacity-70 leading-relaxed text-lg">
-             Earn points every time you shop, review, or engage with Aethravia. Redeem your points for exclusive rewards, early access, and member-only benefits.
+             Earn points every time you shop, review, or engage with BeautyP. Redeem your points for exclusive rewards, early access, and member-only benefits.
            </p>
         </div>
 
@@ -175,7 +175,7 @@ export default function LoyaltyPage() {
                 transition={{ duration: 0.8 }}
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH8AX3rmkoojzeqfztDH33C-ozpMi8xQjEKjhtji4ruOcVsb0954dA2GzcdzSrw46FoznwjkYQZxwfDzwf4QR1UHwHCiW3tS109MOYGYhhgZgDkr23CBEtCAO5qH3esVdkE_Sr1MFgvW1Y-RaTZcYnD7z6zMWMKqNGH6g1l9KSDOISKVP8SBRSwIxD6y2Ul4BZTUJW_rvvdWaeuEQeB3ITG9URJYJq98lm5qkGV0X67XJ49vsGDAc1_E7N2Ty90IEzjdHaU_DvllbV" 
                 className="w-full h-full object-cover"
-                alt="Aethravia Heritage"
+                alt="BeautyP Heritage"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
             </div>

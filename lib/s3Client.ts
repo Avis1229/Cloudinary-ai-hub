@@ -5,7 +5,7 @@ const MINIO_PUBLIC_ENDPOINT = 'http://195.35.22.92:9010';
 const MINIO_INTERNAL_ENDPOINT = process.env.NODE_ENV === 'production' ? 'http://minio:9000' : 'http://localhost:9010';
 const MINIO_ACCESS_KEY = process.env.MINIO_ACCESS_KEY || 'admin';
 const MINIO_SECRET_KEY = process.env.MINIO_SECRET_KEY || 'securepassword123';
-const MINIO_BUCKET_NAME = process.env.MINIO_BUCKET_NAME || 'aethravia';
+const MINIO_BUCKET_NAME = process.env.MINIO_BUCKET_NAME || 'beautyp';
 const MINIO_REGION = process.env.MINIO_REGION || 'us-east-1';
 
 export const s3Client = new S3Client({

@@ -12,7 +12,7 @@ interface Tab {
 
 export default function ProductTabs({ description, ingredients, productName, category }: { description: string; ingredients?: string[]; productName: string; category?: string }) {
   const getRitualText = () => {
-    const name = productName || 'AETHRAVIA Product';
+    const name = productName || 'BeautyP Product';
     if (category === 'Body Scrub') {
       return `Begin your routine by gently exfoliating your skin with the ${name}. Massage a small amount onto damp skin using gentle circular motions, paying attention to rough areas, then rinse thoroughly with water.`;
     }

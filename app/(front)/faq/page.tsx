@@ -21,13 +21,13 @@ const faqList = [
   },
   {
     num: "04",
-    question: "Are Aethravia products suitable for all skin types?",
+    question: "Are BeautyP products suitable for all skin types?",
     answer: "Yes. Our formulations are designed to be gentle and suitable for most skin types. However, we recommend performing a patch test before first use, especially if you have sensitive skin."
   },
   {
     num: "05",
     question: "International shipping and handling.",
-    answer: "Aethravia ships globally via carbon-neutral logistics. Due to the delicate nature of artisanal batches, please allow 7–12 days for international curation and delivery."
+    answer: "BeautyP ships globally via carbon-neutral logistics. Due to the delicate nature of artisanal batches, please allow 7–12 days for international curation and delivery."
   }
 ];
 

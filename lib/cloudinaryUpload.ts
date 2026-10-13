@@ -30,7 +30,7 @@ export async function uploadToCloudinaryPipeline(
       unique_filename: true,
       overwrite: false,
       filename_override: filename.replace(/[^\w.\- ]+/g, '_').slice(0, 100),
-      context: `pipeline=${pipelineType}|source=aetheravia|uploaded_at=${new Date().toISOString()}`,
+      context: `pipeline=${pipelineType}|source=beautyp|uploaded_at=${new Date().toISOString()}`,
       ...(ENABLE_MODERATION && resourceType === 'image' && { moderation: 'aws_rek' }),
     };
 

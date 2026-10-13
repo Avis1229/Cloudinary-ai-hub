@@ -10,7 +10,7 @@ export default function HeroModern() {
       <div className="absolute inset-0 z-0">
         <Image 
           src="/images/hero-products.jpeg"
-          alt="Aethravia Products Set"
+          alt="BeautyP Products Set"
           fill
           priority
           className="object-cover brightness-95"

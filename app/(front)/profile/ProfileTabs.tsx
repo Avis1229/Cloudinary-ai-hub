@@ -195,7 +195,7 @@ export default function ProfileTabs() {
                         <span className="material-symbols-outlined">mail</span>
                         <p className="font-label font-bold text-sm">EMAIL US</p>
                       </div>
-                      <a href="mailto:aethravia@gmail.com" className="font-body text-sm text-on-surface hover:text-primary transition-colors">aethravia@gmail.com</a>
+                      <a href="mailto:support@beautyp.com" className="font-body text-sm text-on-surface hover:text-primary transition-colors">support@beautyp.com</a>
                       <p className="text-[10px] text-secondary opacity-50 mt-2 italic">We typically respond within 24 hours.</p>
                    </div>
                    <div className="p-8 bg-surface-container-low rounded border border-outline-variant/10">
@@ -215,7 +215,7 @@ export default function ProfileTabs() {
                   {[
                     { q: 'How do I change my password?', a: 'Go to the Profile tab and enter a new password in the password fields, then click Update Record.' },
                     { q: 'Where are my orders?', a: 'Visit Order History from the top-right menu to see all your past and current orders.' },
-                    { q: 'How do I start a return?', a: 'Email us at aethravia@gmail.com with your order number and reason for return.' }
+                    { q: 'How do I start a return?', a: 'Email us at support@beautyp.com with your order number and reason for return.' }
                   ].map((faq, i) => (
                     <div key={i} className="p-6 bg-surface-container-high/40 rounded border border-outline-variant/5">
                       <p className="font-label font-bold text-[10px] text-primary uppercase tracking-widest mb-2">{faq.q}</p>

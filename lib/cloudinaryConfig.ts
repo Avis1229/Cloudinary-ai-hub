@@ -1,6 +1,6 @@
 import { v2 as cloudinary } from 'cloudinary';
 
-export const ROOT_FOLDER = (process.env.CLOUDINARY_FOLDER || 'aetheravia').trim().replace(/^\/+|\/+$/g, '');
+export const ROOT_FOLDER = (process.env.CLOUDINARY_FOLDER || 'BeautyP').trim().replace(/^\/+|\/+$/g, '');
 export const ENABLE_AUTO_TAGGING = process.env.ENABLE_AUTO_TAGGING !== 'false';
 export const ENABLE_MODERATION = process.env.ENABLE_MODERATION === 'true';
 

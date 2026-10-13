@@ -127,7 +127,7 @@ const Form = () => {
           <div className="w-full max-w-md">
             {/* Brand Header */}
             <div className="mb-12">
-              <h1 className="text-2xl font-headline tracking-tight text-primary italic mb-2">Aethravia Store</h1>
+              <h1 className="text-2xl font-headline tracking-tight text-primary italic mb-2">BeautyP Store</h1>
               <h2 className="text-4xl font-headline font-bold text-on-surface leading-tight mb-4">Welcome back</h2>
               <p className="text-secondary font-body font-light">Return to your curated rituals of self-care.</p>
             </div>
@@ -297,7 +297,7 @@ const Form = () => {
       {/* Embedded Footer (Page Specific Layout) */}
       <footer className="bg-surface-container-highest text-primary font-body text-[10px] uppercase tracking-[0.2em] font-bold w-full mt-auto flex flex-col md:flex-row justify-between items-center px-12 py-16 gap-8">
         <div className="flex-shrink-0">
-          <span className="font-headline italic text-lg normal-case">Aethravia Store</span>
+          <span className="font-headline italic text-lg normal-case">BeautyP Store</span>
         </div>
         <div className="flex flex-wrap justify-center gap-8 md:gap-12">
           <Link className="text-secondary hover:text-primary transition-colors" href="/about">Sustainability</Link>
@@ -306,7 +306,7 @@ const Form = () => {
           <Link className="text-secondary hover:text-primary transition-colors" href="/terms">Terms</Link>
         </div>
         <div className="text-[#a09e9a]">
-          © 2024 Aethravia. Handcrafted Heritage.
+          © 2024 BeautyP. Handcrafted Heritage.
         </div>
       </footer>
     </div>

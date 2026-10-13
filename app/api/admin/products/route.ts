@@ -33,7 +33,7 @@ export const POST = auth(async (req: any) => {
     image: '/images/products/natural-cosmetic-products-arrangement.jpg',
     price: 1,
     category: 'Body Care',
-    brand: 'Aethravia',
+    brand: 'BeautyP',
     countInStock: 0,
     description: 'A newly archived treasure awaiting its description.',
     rating: 0,

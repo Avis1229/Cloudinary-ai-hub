@@ -119,7 +119,7 @@ const nextConfig = {
     return [
       {
         source: '/storage/:path*',
-        destination: 'http://minio:9000/aethravia/:path*',
+        destination: `http://minio:9000/${process.env.MINIO_BUCKET_NAME || 'beautyp'}/:path*`,
       },
     ];
   },

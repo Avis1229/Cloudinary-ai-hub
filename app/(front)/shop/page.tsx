@@ -8,7 +8,7 @@ import { INGREDIENTS } from '@/lib/constants/ingredients';
 import productService from '@/lib/services/productService';
 
 export const metadata: Metadata = {
-  title: 'Aethravia | The Artisanal Archive',
+  title: 'BeautyP | The Artisanal Archive',
   description: 'Explore our hand-poured formulas inspired by ancient Vedic rituals and the raw textures of Bharat.',
 };
 

@@ -48,7 +48,7 @@ const Header = () => {
               <div className="relative w-8 h-8 sm:w-10 sm:h-10">
                 <Image
                   src="/images/logo.png"
-                  alt="Aethravia Logo"
+                  alt="BeautyP Logo"
                   fill
                   sizes="(max-width: 640px) 32px, 40px"
                   className="object-contain"
@@ -58,7 +58,7 @@ const Header = () => {
               <div className="hidden sm:block relative h-6 w-32 sm:h-8 sm:w-40 hover:opacity-80 transition-opacity">
                 <Image
                   src="/images/logo-text.png"
-                  alt="Aethravia Logo Text"
+                  alt="BeautyP Logo Text"
                   fill
                   className="object-contain"
                   priority

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { Package, Search, Target, Check, X, Minus, BarChart, CheckCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Order Management - Aethravia Admin',
+  title: 'Order Management - BeautyP Admin',
   description: 'Choose your order management interface',
 };
 

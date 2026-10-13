@@ -7,9 +7,9 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
   ogImage: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/images/og-image.jpg`,
   links: {
-    twitter: 'https://twitter.com/Aethravia',
-    instagram: 'https://instagram.com/_aethravia',
-    facebook: 'https://facebook.com/Aethravia',
+    twitter: 'https://twitter.com/BeautyP',
+    instagram: 'https://instagram.com/beautyp',
+    facebook: 'https://facebook.com/BeautyP',
   },
 };
 
@@ -68,7 +68,7 @@ export function constructMetadata({
       title,
       description,
       images: [image],
-      creator: '@Aethravia',
+      creator: '@BeautyP',
     },
     icons,
     metadataBase: new URL(siteConfig.url),
@@ -114,7 +114,7 @@ export function getOrganizationSchema() {
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: process.env.NEXT_PUBLIC_SUPPORT_PHONE || '+91-9876543210',
-      email: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || 'aethravia@gmail.com',
+      email: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || 'support@beautyp.com',
       contactType: 'Customer Service',
       availableLanguage: ['English', 'Hindi'],
       areaServed: 'IN',

@@ -1,6 +1,6 @@
-# 🚀 Render Deployment Guide (Aethravia Store)
+# 🚀 Render Deployment Guide (BeautyP Store)
 
-This guide describes how to deploy the **Aethravia Store** Next.js app to **Render** using the repo’s Blueprint file.
+This guide describes how to deploy the **BeautyP Store** Next.js app to **Render** using the repo’s Blueprint file.
 
 ## ✅ What the repo already includes
 

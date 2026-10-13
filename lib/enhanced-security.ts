@@ -2,7 +2,7 @@ import mongoSanitize from 'mongo-sanitize';
 import { NextRequest } from 'next/server';
 
 /**
- * Enterprise-grade security utilities for Aethravia
+ * Enterprise-grade security utilities for BeautyP
  * Provides comprehensive protection against all major security threats
  * Edge Runtime compatible implementation
  */
