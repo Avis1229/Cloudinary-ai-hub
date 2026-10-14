@@ -70,7 +70,16 @@ export function constructMetadata({
       images: [image],
       creator: '@BeautyP',
     },
-    icons,
+    icons: {
+      icon: [
+        { url: '/favicon.ico' },
+        { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+      ],
+      shortcut: '/favicon.ico',
+      apple: [
+        { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+      ],
+    },
     metadataBase: new URL(siteConfig.url),
     alternates: {
       canonical: siteConfig.url,
