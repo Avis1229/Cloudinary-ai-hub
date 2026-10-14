@@ -17,8 +17,8 @@ export const config = {
   ...(process.env.NEXTAUTH_URL && { url: process.env.NEXTAUTH_URL }),
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || 'placeholder',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'placeholder',
+      clientId: process.env.GOOGLE_CLIENT_ID?.trim() || 'placeholder',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET?.trim() || 'placeholder',
       allowDangerousEmailAccountLinking: true, // Allow linking Google email to existing credentials account
     }),
     CredentialsProvider({
