@@ -81,41 +81,43 @@ export const config = {
   pages: {
     signIn: '/signin',
     newUser: '/register',
-    error: '/error',
+    error: '/signin',
   },
   callbacks: {
     async jwt({ user, token, trigger, session, account }: any) {
       // If user is signing in, add user data to token
       if (user) {
-        await dbConnect();
-        // Always fetch the latest user from DB to ensure we get the correct MongoDB _id
-        // because GoogleProvider returns the Google Account ID in user.id
-        const dbUser = await UserModel.findOne({ email: user.email });
-        
-        if (dbUser) {
-          const idStr = dbUser._id.toString();
-          token.user = {
-            id: idStr,
-            _id: idStr,
-            email: dbUser.email,
-            name: dbUser.name,
-            isAdmin: dbUser.isAdmin,
-            avatar: dbUser.avatar || null,
-          };
-        } else {
-          // Fallback if somehow not in DB yet
-          const idStr = typeof user._id === 'string' 
-            ? user._id 
-            : user._id?.toString() || user.id;
+        try {
+          await dbConnect();
+          const userEmail = (user.email || '').toLowerCase().trim();
+          const dbUser = await UserModel.findOne({ email: userEmail });
           
-          token.user = {
-            id: idStr,
-            _id: idStr,
-            email: user.email,
-            name: user.name,
-            isAdmin: user.isAdmin,
-            avatar: (user as any).avatar || user.image || null,
-          };
+          if (dbUser) {
+            const idStr = dbUser._id.toString();
+            token.user = {
+              id: idStr,
+              _id: idStr,
+              email: dbUser.email,
+              name: dbUser.name,
+              isAdmin: dbUser.isAdmin,
+              avatar: dbUser.avatar || null,
+            };
+          } else {
+            const idStr = typeof user._id === 'string' 
+              ? user._id 
+              : user._id?.toString() || user.id;
+            
+            token.user = {
+              id: idStr,
+              _id: idStr,
+              email: user.email,
+              name: user.name,
+              isAdmin: user.isAdmin || false,
+              avatar: (user as any).avatar || user.image || null,
+            };
+          }
+        } catch (dbErr) {
+          console.error('Error in JWT callback db query:', dbErr);
         }
       }
       // Handle session updates (e.g. after avatar upload via update())
@@ -144,39 +146,42 @@ export const config = {
       if (account?.provider === 'google') {
         try {
           await dbConnect();
-          const existingUser = await UserModel.findOne({ email: user.email });
+          const userEmail = (user?.email || profile?.email || '').toLowerCase().trim();
+          if (!userEmail) return true;
+
+          const existingUser = await UserModel.findOne({ email: userEmail });
           
           if (!existingUser) {
-            // Get referral code from cookie if present
-            const cookieStore = await cookies();
-            const referralCode = cookieStore.get('referral_code')?.value;
+            let referralCode: string | undefined;
+            try {
+              const cookieStore = await cookies();
+              referralCode = cookieStore?.get('referral_code')?.value;
+            } catch {
+              // Ignore cookie access failures in edge/auth handlers
+            }
 
-            // Create new social user
             const newUser = await UserModel.create({
-              name: user.name || profile?.name || 'Archive Member',
-              email: user.email,
+              name: user.name || profile?.name || 'BeautyP Member',
+              email: userEmail,
               avatar: user.image || profile?.picture,
               isAdmin: false,
-              referredBy: referralCode || undefined, // Link referral if exists
+              referredBy: referralCode || undefined,
             });
             
-            // Update the user object with the DB ID for the JWT callback
             user.id = newUser._id.toString();
             user._id = newUser._id.toString();
             user.isAdmin = false;
           } else {
-            // Update user object with existing DB info
             user.id = existingUser._id.toString();
             user._id = existingUser._id.toString();
             user.isAdmin = existingUser.isAdmin;
             
-            // Sync avatar/name if it's missing or updated
             let hasChanges = false;
             if (!existingUser.avatar && (user.image || profile?.picture)) {
               existingUser.avatar = user.image || profile?.picture;
               hasChanges = true;
             }
-            if (existingUser.name === 'Archive Member' && (user.name || profile?.name)) {
+            if ((existingUser.name === 'Archive Member' || existingUser.name === 'BeautyP Member') && (user.name || profile?.name)) {
               existingUser.name = user.name || profile?.name;
               hasChanges = true;
             }
@@ -187,13 +192,12 @@ export const config = {
           }
           return true;
         } catch (error) {
-          console.error('Error during Google sign-in:', error);
-          return false;
+          console.error('Handled non-fatal error during Google sign-in:', error);
+          return true;
         }
       }
       
       if (user?.email) {
-        console.log(`Successful credentials login for: ${user.email.substring(0, 3)}***`);
         return true;
       }
       return false;
