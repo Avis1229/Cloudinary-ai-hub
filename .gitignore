@@ -154,9 +154,11 @@ security-reports/
 
 # === MEDIA & UPLOADS ===
 # Large media files (use Git LFS if needed)
-uploads/
-media/
+/uploads/
+/media/
 public/uploads/
+!app/admin/media/
+!app/api/admin/media/
 *.mov
 *.mp4
 *.avi
