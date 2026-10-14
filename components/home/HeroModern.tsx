@@ -11,7 +11,7 @@ export default function HeroModern() {
       {/* Background artwork */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="/images/hero-luxury.jpg"
+          src="/images/hero-beautyp.jpg"
           alt="BeautyP Artisanal Skin Rituals"
           fill
           priority
