@@ -199,7 +199,7 @@ switch (command) {
 
   default:
     console.log(`
-🌟 Aethravia Environment Manager
+🌟 BeautyP Environment Manager
 
 Usage:
   node env-manager.js validate [file]     - Validate environment file

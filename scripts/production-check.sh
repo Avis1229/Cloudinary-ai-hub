@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Aethravia Production Readiness Checker
+# BeautyP Production Readiness Checker
 # Run this script before deploying to production
 
-echo "🔍 Aethravia Production Readiness Check"
+echo "🔍 BeautyP Production Readiness Check"
 echo "======================================"
 
 # Color codes for output

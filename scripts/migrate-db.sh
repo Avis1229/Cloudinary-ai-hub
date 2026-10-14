@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==============================================================================
-# AETHRAVIA - MONGODB ATLAS TO LOCAL MONGODB MIGRATION SCRIPT
+# BEAUTYP - MONGODB ATLAS TO LOCAL MONGODB MIGRATION SCRIPT
 # ==============================================================================
 
 # Ensure you have 'mongodatabase-tools' installed on your system.

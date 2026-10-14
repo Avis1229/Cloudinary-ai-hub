@@ -11,7 +11,7 @@ const s3Client = new S3Client({
   forcePathStyle: true,
 });
 
-const BUCKET_NAME = 'aethravia';
+const BUCKET_NAME = 'beautyp';
 
 // The policy that allows anyone to read (download) files from this bucket
 const readOnlyAnonymousPolicy = {

@@ -34,8 +34,8 @@ BeautyP is a premium, full-stack e-commerce platform built with modern web techn
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/heukcare01/aethravia.git
-cd aethravia
+git clone https://github.com/heukcare01/beautyp.git
+cd beautyp
 ```
 
 ### 2. Install Dependencies

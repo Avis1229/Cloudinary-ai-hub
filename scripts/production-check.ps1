@@ -1,11 +1,11 @@
-# Aethravia Production Readiness Checker (PowerShell)
+# BeautyP Production Readiness Checker (PowerShell)
 # Run this script before deploying to production
 
 param(
     [switch]$Detailed = $false
 )
 
-Write-Host "🔍 Aethravia Production Readiness Check" -ForegroundColor Cyan
+Write-Host "🔍 BeautyP Production Readiness Check" -ForegroundColor Cyan
 Write-Host "======================================" -ForegroundColor Cyan
 
 $Errors = 0

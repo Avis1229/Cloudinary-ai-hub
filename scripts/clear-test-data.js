@@ -1,5 +1,5 @@
 /**
- * Aethravia - Pre-Live Data Cleanup Script
+ * BeautyP - Pre-Live Data Cleanup Script
  * 
  * Clears test/dummy data from MongoDB before going live.
  * 

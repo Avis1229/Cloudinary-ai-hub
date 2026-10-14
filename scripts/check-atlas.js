@@ -1,7 +1,9 @@
 const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
 async function checkRemoteDB() {
-  const uri = "mongodb+srv://heukcare_db_user:D4Jsnep56SHcnK9O@cluster0.bghvakr.mongodb.net/aethravia?appName=Cluster0";
+  const uri = process.env.MONGODB_URI;
+  if (!uri) { console.error('MONGODB_URI not set'); process.exit(1); }
   const client = new MongoClient(uri);
 
   try {

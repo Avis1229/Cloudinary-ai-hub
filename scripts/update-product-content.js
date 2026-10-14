@@ -1,5 +1,5 @@
 /**
- * Aethravia - Update Product Ingredients, Ritual & Description
+ * BeautyP - Update Product Ingredients, Ritual & Description
  * Run: node scripts/update-product-content.js
  */
 
