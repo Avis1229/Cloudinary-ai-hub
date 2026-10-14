@@ -43,7 +43,7 @@ export default function RitualPage() {
             </div>
             <div className="lg:col-span-6 relative">
               <div className="relative w-full aspect-[4/5] bg-surface-container-low rounded-xl overflow-hidden shadow-2xl border border-outline-variant/10">
-                <img alt="Ritual setup" className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-1000" data-alt="close-up of raw earth clay and wooden bowls on a textured linen cloth in soft cinematic lighting" src="/images/ritual.jpeg" />
+                <img alt="Ritual setup" className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-1000" data-alt="close-up of raw earth clay and wooden bowls on a textured linen cloth in soft cinematic lighting" src="/images/ritual-beautyp.jpeg" />
               </div>
               <div className="absolute -bottom-8 -left-8 md:-left-12 p-10 bg-surface-container-lowest/90 backdrop-blur-xl shadow-2xl rounded-sm max-w-xs border border-outline-variant/20 z-20">
                 <span className="font-headline italic text-primary text-xl block mb-3 leading-none">The Earth Speaks</span>
@@ -79,14 +79,14 @@ export default function RitualPage() {
               
               <div className="group">
                 <div className="aspect-[4/5] bg-surface-container rounded-2xl overflow-hidden shadow-lg border border-outline-variant/10">
-                  <img alt="Everyday Self-Care Ritual" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/images/selfcare-ritual.jpeg" />
+                  <img alt="Everyday Self-Care Ritual" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/images/selfcare-beautyp.jpeg" />
                 </div>
               </div>
             </div>
 
             <div className="group w-full">
               <div className="w-full bg-surface-container rounded-3xl overflow-hidden shadow-xl border border-outline-variant/10">
-                <img alt="BeautyP Complete Collection" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" src="/images/below-3.jpeg" />
+                <img alt="BeautyP Complete Collection" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" src="/images/below-3-beautyp.jpeg" />
               </div>
             </div>
           </div>

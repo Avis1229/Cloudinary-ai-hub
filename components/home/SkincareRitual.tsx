@@ -45,7 +45,7 @@ export default function SkincareRitual() {
           <div className="absolute -top-10 -left-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
           <div className="relative z-10 rounded-2xl shadow-2xl overflow-hidden group">
             <Image 
-              src="/images/3_step.jpeg"
+              src="/images/3_step-beautyp.jpeg"
               alt="Artisanal Skincare Ritual"
               width={1600}
               height={900}

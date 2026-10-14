@@ -170,9 +170,9 @@ const ProductPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
       {/* Product Infographic Image */}
       {(['Face Wash', 'Body Wash', 'Body Scrub'].includes(product.category)) && (() => {
         const infoImages: Record<string, string> = {
-          'Face Wash': '/images/products/facewash-info.jpeg',
-          'Body Wash': '/images/products/bodywash-info.jpeg',
-          'Body Scrub': '/images/products/bodyscrub-info.jpeg',
+          'Face Wash': '/images/products/facewash-beautyp.jpeg',
+          'Body Wash': '/images/products/bodywash-beautyp.jpeg',
+          'Body Scrub': '/images/products/bodyscrub-beautyp.jpeg',
         };
         return (
           <section className="mt-16 md:mt-24 max-w-screen-md mx-auto px-6 md:px-12">
